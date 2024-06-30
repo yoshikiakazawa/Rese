@@ -1,0 +1,229 @@
+.history__grid-parent {
+    max-width: 1230px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 80px 60px 1fr;
+}
+
+.history__login-name {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    height: 100%;
+    width: calc(100% - 64px);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.history {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    height: 100%;
+    width: calc(100% - 64px);
+    margin: auto;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .history__login-name {
+        width: calc(100% - 48px);
+        font-size: 24px;
+    }
+
+    .history {
+        width: calc(100% - 48px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .history__login-name {
+        width: calc(100% - 16px);
+    }
+
+    .history {
+        width: calc(100% - 16px);
+    }
+}
+
+.history__ttl {
+    font-size: 24px;
+    font-weight: bold;
+    height: 1em;
+}
+
+.history__ttl--link {
+    color: black;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.history__ttl--empty-message {
+    padding: 24px 0;
+    font-weight: normal;
+}
+
+.flash_message {
+    height: 24px;
+    display: flex;
+    align-items: end;
+}
+
+.history__detail--grid-parent {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(240px, 1fr) minmax(240px, 1fr);
+    gap: 32px;
+}
+
+.history__detail {
+    background-color: #387ADF;
+    color: rgb(255, 255, 255);
+    margin-bottom: 2em;
+    padding: 10%;
+    border-radius: 6px;
+}
+
+.history__detail--header {
+    margin-bottom: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.history__detail--header-ttl,
+.history__detail--checked,
+.history__modal--button-label {
+    font-size: 20px;
+}
+
+.history__detail--modal {
+    display: flex;
+    align-items: center;
+}
+
+.history__modal--button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.history__modal--button-close,
+.history__modal--button-submit {
+    background-color: #387ADF;
+    color: #F2F2F2;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    border: none;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.modal {
+    display: none;
+    width: 350px;
+    height: 340px;
+    background-color: #387ADF;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    margin: auto;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, .8);
+    border-radius: 6px;
+}
+
+.modal-toggle:checked+.modal {
+    display: block;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.history__modal--button-label {
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 4px;
+}
+
+.modal-toggle {
+    display: none;
+}
+
+.history__modal--form {
+    width: 100%;
+}
+
+.history__modal--table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.history__modal--table-header,
+.history__modal--table-text {
+    font-size: 16px;
+    padding-bottom: 1em;
+    text-align: left;
+}
+
+.history__modal--table-header {
+    width: 35%;
+}
+
+.history__modal--table-select,
+.history__modal--table-textarea {
+    padding: 4px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+}
+
+.history__table {
+    width: 100%;
+}
+
+.history__table--header,
+.history__table--text {
+    font-size: 16px;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.history__table--header {
+    width: 35%;
+}
+
+@media screen and (max-width: 768px) {
+
+    .history__ttl,
+    .history__ttl--link {
+        font-size: 20px;
+    }
+
+    .history__detail--grid-parent {
+        grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) minmax(180px, 1fr);
+        gap: 24px;
+    }
+
+    .history__detail {
+        margin-bottom: 1em;
+        padding: 5%;
+    }
+
+    .history__detail--header-ttl,
+    .history__detail--checked,
+    .history__modal--button-label {
+        font-size: 18px;
+    }
+
+
+    .history__table--header,
+    .history__table--text {
+        font-size: 14px;
+    }
+
+}

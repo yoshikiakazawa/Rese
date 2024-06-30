@@ -1,0 +1,144 @@
+body {
+    background-color: rgb(238, 238, 238);
+    width: 100vw;
+    max-width: 1230px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav {
+    width: calc(100% - 64px);
+    margin: 0 auto;
+    font-size: 32px;
+    color: #387ADF;
+    position: relative;
+}
+
+.nav__content {
+    display: flex;
+    position: absolute;
+    top: 24px;
+    align-items: center;
+}
+
+.nav__ttl {
+    margin-left: 16px;
+}
+
+#open,
+#close {
+    background-color: #387ADF;
+    color: #F1F1F1;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+#close {
+    display: inline;
+    position: absolute;
+    top: 24px;
+}
+
+#modal {
+    height: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: transform 0.2s;
+    background-color: rgb(238, 238, 238);
+    z-index: 2;
+}
+
+#mask {
+    background-color: rgb(238, 238, 238);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#modal.hidden {
+    transform: translate(0, -600px);
+    transition: transform 0s;
+}
+
+#mask.hidden {
+    display: none;
+}
+
+.modal__nav {
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal__nav--list {
+    text-align: center;
+    height: 200px;
+}
+
+.modal__nav--item a {
+    color: #387ADF;
+    text-decoration: none;
+    margin: 32px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.modal__nav--button {
+    border: none;
+    color: #387ADF;
+    font-weight: bold;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        width: calc(100% - 48px);
+        font-size: 28px;
+    }
+
+    .nav__ttl {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .nav {
+        width: calc(100% - 16px);
+        font-size: 18px;
+    }
+
+    .nav__ttl {
+        margin-left: 4px;
+    }
+
+    #open,
+    #close {
+        font-size: 18px;
+    }
+
+    .nav,
+    .modal__nav--button {
+        font-size: 24px;
+    }
+
+    #modal {
+        height: 400px;
+    }
+
+    #modal.hidden {
+        transform: translate(0, -400px);
+    }
+}

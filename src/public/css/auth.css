@@ -1,0 +1,132 @@
+.auth {
+    width: calc(100% - 64px);
+    max-width: 1230px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 60px 500px;
+    gap: 10px;
+}
+
+.auth-parent {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    margin: 0 auto;
+    position: relative;
+}
+
+.auth-form {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+}
+
+.auth-ttl {
+    padding: 24px;
+    background-color: #387ADF;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-bottom: 24px;
+    border-radius: 4px 4px 0 0;
+}
+
+.auth-form__content {
+    width: 100%;
+}
+
+.auth-form__content--text {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form__content--text input {
+    font-size: 16px;
+    outline: none;
+    padding: 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+    border: none;
+    margin-right: 32px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: solid 1px rgb(142, 142, 142);
+    color: rgb(142, 142, 142);
+}
+
+img {
+    margin-left: 32px;
+}
+
+.auth-form__content--error {
+    height: 20px;
+    text-align: right;
+    margin-right: 20px;
+    color: tomato;
+    font-size: 14px;
+}
+
+.auth-form__content--btn {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    text-align: right;
+    margin-right: 32px;
+}
+
+.auth-form__content--btn-submit {
+    background-color: #387ADF;
+    color: rgb(255, 255, 255);
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .auth {
+        grid-template-rows: 40px 400px;
+    }
+
+    .auth-form {
+        width: 400px;
+    }
+
+    .auth-form__content--error {
+        font-size: 12px;
+    }
+
+    .auth-ttl {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .auth-form__content--btn {
+        margin-bottom: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .auth-form {
+        width: 300px;
+    }
+
+    .auth-ttl {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .auth-form__content--btn {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .auth-form__content--text input {
+        padding: 4px;
+    }
+}
