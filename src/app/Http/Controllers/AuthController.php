@@ -8,6 +8,8 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\EmailVerificationNotification;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -22,11 +24,25 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'email_verification_token' => Str::random(60),
         ]);
 
+        $user->notify(new EmailVerificationNotification($user->email_verification_token));
         Auth::login($user);
 
         return redirect()->route('thanks');
+    }
+
+    public function verifyEmail($token)
+    {
+        $user = User::where('email_verification_token', $token)->firstOrFail();
+        $user->email_verified_at = now();
+        $user->email_verification_token = null;
+        $user->save();
+
+        Auth::login($user);
+
+        return redirect()->route('index')->with('success', 'Your email has been verified!');
     }
 
     public function thanks()

@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminController;
 */
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('showRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-
+Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('showLogin');
 Route::post('login', [AuthController::class, 'login'])->name('login');
