@@ -1,7 +1,7 @@
 <div class="nav">
     <div class="nav__content">
         <div id="open"><i class="bi bi-list"></i></div>
-        <h1 class="nav__ttl">Rese</h1>
+        <h1 class="nav__ttl">Rese Admin</h1>
     </div>
     <div id="mask" class="hidden"></div>
     <section id="modal" class="hidden">
