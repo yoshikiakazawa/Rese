@@ -9,13 +9,7 @@
         <nav class="modal__nav">
             <ul class="modal__nav--list">
                 <li class="modal__nav--item"><a href="{{ route('index') }}">HOME</a></li>
-                <li class="modal__nav--item">
-                    <form class="form" action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button class="modal__nav--button">Logout</button>
-                    </form>
-                </li>
-                <li class="modal__nav--item"><a href="{{ route('mypage') }}">Mypage</a></li>
+                <li class="modal__nav--item"><a href="{{ route('showLogin') }}">一般Login</a></li>
             </ul>
         </nav>
     </section>

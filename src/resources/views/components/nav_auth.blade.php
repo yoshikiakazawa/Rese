@@ -8,9 +8,9 @@
         <div id="close"><i class="bi bi-x"></i></div>
         <nav class="modal__nav">
             <ul class="modal__nav--list">
-                <li class="modal__nav--item"><a href="/">HOME</a></li>
-                <li class="modal__nav--item"><a href="/register">Registration</a></li>
-                <li class="modal__nav--item"><a href="/login">Login</a></li>
+                <li class="modal__nav--item"><a href="{{ route('index') }}">HOME</a></li>
+                <li class="modal__nav--item"><a href="{{ route('showRegister') }}">Registration</a></li>
+                <li class="modal__nav--item"><a href="{{ route('showLogin') }}">Login</a></li>
             </ul>
         </nav>
     </section>

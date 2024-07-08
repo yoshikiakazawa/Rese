@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +45,15 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->group(function ()
 {
-    Route::get('login', [AdminController::class, 'showLoginForm'])->name('showAdminLogin');
-    Route::post('login', [AdminController::class, 'login'])->name('adminLogin');
-    Route::get('logout', [AdminController::class, 'logout'])->name('adminLogout');
+    Route::get('login', [AuthAdminController::class, 'showLoginForm'])->name('showAdminLogin');
+    Route::post('login', [AuthAdminController::class, 'login'])->name('adminLogin');
+
 });
 
 Route::middleware('auth:admins')->group(function ()
 {
+    Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('adminLogout');
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('storeOwner');
+    Route::get('/admin/detail/{owner_id}', [AdminController::class, 'detail'])->name('detailOwner');
 });

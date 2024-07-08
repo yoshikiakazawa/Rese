@@ -1,0 +1,242 @@
+.owner-list {
+    max-width: 1230px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 80px 50px 1fr;
+}
+
+.owner-list__heading {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    width: calc(100% - 64px);
+    margin: 0 auto;
+    font-size: 36px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .owner-list {
+        grid-template-columns: minmax(280px, 1fr) minmax(200px, 1fr);
+        grid-template-rows: 70px 40px 1fr;
+    }
+
+    .owner-list__heading {
+        width: calc(100% - 48px);
+        font-size: 28px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .owner-list {
+        grid-template-columns: minmax(250px, 1fr) minmax(180px, 1fr);
+        grid-template-rows: 60px 30px 1fr;
+    }
+
+    .owner-list__heading {
+        width: calc(100% - 16px);
+        font-size: 24px;
+    }
+}
+
+.owner-list__table {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    width: calc(100% - 64px);
+    margin: 0 auto;
+}
+
+.owner-list__table--inner {
+    margin: 0 auto;
+    width: 340px;
+}
+
+.owner-list__table--header {
+    font-size: 24px;
+    padding-bottom: .5em;
+}
+
+.owner-list__table--content {
+    font-size: 20px;
+    padding-bottom: 1em;
+}
+
+.owner-list__table--button-link {
+    color: black;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .owner-list__table {
+        width: calc(100% - 48px);
+    }
+
+    .owner-list__table--inner {
+        width: 250px;
+    }
+
+    .owner-list__table--header {
+        font-size: 18px;
+    }
+
+    .owner-list__table--content {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .owner-list__table {
+        width: calc(100% - 16px);
+    }
+
+    .owner-list__table--inner {
+        width: 240px;
+    }
+
+    .owner-list__table--header {
+        font-size: 16px;
+    }
+
+    .owner-list__table--content {
+        font-size: 14px;
+    }
+}
+
+.owner-list__form {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    width: 230px;
+}
+
+.owner-list__form--ttl {
+    font-size: 24px;
+    margin-bottom: .5em;
+}
+
+.owner-list__form--text-group {
+    height: 60px;
+    margin-left: 16px;
+}
+
+.owner-list__form--input {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 36px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    background-color: rgb(238, 238, 238);
+}
+
+.owner-list__form--input img,
+.owner-list__form--input input {
+    margin: 0 4px;
+    padding-left: 8px;
+    background-color: rgb(238, 238, 238);
+}
+
+.owner-list__form--input img {
+    height: 90%;
+    width: auto;
+}
+
+.owner-list__form--input input {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 90%;
+}
+
+.owner-list__form__error-message,
+.owner-list__form__message {
+    padding-left: 8px;
+    padding-top: 4px;
+    height: 24px;
+    font-size: 12px;
+}
+
+.owner-list__form__message {
+    color: gray;
+}
+
+.owner-list__form__error-message {
+    color: tomato;
+}
+
+.owner-list__form__btn--submit {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    background-color: #387ADF;
+    color: #F2F2F2;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .owner-list__form {
+        width: 180px;
+    }
+
+    .owner-list__form--ttl {
+        font-size: 20px;
+    }
+
+    .owner-list__form--text-group {
+        height: 56px;
+        margin-left: 10px;
+    }
+
+    .owner-list__form--input input {
+        font-size: 16px;
+    }
+
+    .owner-list__form__error-message,
+    .owner-list__form__message {
+        font-size: 10px;
+    }
+
+    .owner-list__form__btn--submit {
+        height: 28px;
+        padding: 0 10px;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .owner-list__form {
+        width: calc(100% - 8px);
+        margin-right: auto;
+    }
+
+    .owner-list__form--ttl {
+        font-size: 18px;
+    }
+
+    .owner-list__form--text-group {
+        margin-left: 4px;
+    }
+
+    .owner-list__form--input input {
+        font-size: 14px;
+    }
+
+    .owner-list__form__error-message,
+    .owner-list__form__message {
+        margin-left: 4px;
+    }
+
+    .owner-list__form__btn--submit {
+        margin-left: 4px;
+    }
+}

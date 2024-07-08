@@ -16,6 +16,7 @@ class Owner extends Authenticatable
         'ownerid',
         'name',
         'password',
+        'remember_token',
     ];
 
     protected $hidden = [

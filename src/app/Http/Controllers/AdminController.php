@@ -3,41 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\AdminRequest;
+use App\Models\Owner;
+use App\Models\Shop;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Http\Requests\StoreOwnerRequest;
 
 class AdminController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view('admin/login');
-    }
-
-    public function login(AdminRequest $request)
-    {
-        $credentials = $request->only(['adminid', 'password']);
-
-        if (Auth::guard('admins')->attempt($credentials))
-        {
-            $request->session()->regenerate();
-            return redirect()->route('admin');
-        }
-        return redirect()->back();
-
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('showLoginForm');
-    }
-
     public function admin() {
+        $owners = Owner::all();
+        return view('admin.index', compact('owners'));
+    }
 
-        return view('admin.index');
+    public function store(StoreOwnerRequest $request) {
+        Owner::create([
+            'ownerid' => $request->ownerid,
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(10),
+        ]);
+        return redirect()->back()->with('message', 'ownerを作成しました。');
+    }
+
+    public function detail($id)
+    {
+        $owner = Owner::findOrFail($id);
+        $shops = Shop::where('owner_id', $id)->with(['areas', 'genres'])->get();
+
+        return view('admin.detail', compact('shops', 'owner'));
     }
 }
