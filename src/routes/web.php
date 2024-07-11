@@ -7,6 +7,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\AuthOwnerController;
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,8 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('show
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('showLogin');
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('showLogin');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/', [ShopController::class,'index'])->name('index');
 Route::get('/detail/{shop_id}', [ShopController::class,'detail'])->name('detail');
@@ -45,8 +47,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->group(function ()
 {
-    Route::get('login', [AuthAdminController::class, 'showLoginForm'])->name('showAdminLogin');
-    Route::post('login', [AuthAdminController::class, 'login'])->name('adminLogin');
+    Route::get('/login', [AuthAdminController::class, 'showLoginForm'])->name('showAdminLogin');
+    Route::post('/login', [AuthAdminController::class, 'login'])->name('adminLogin');
 
 });
 
@@ -56,4 +58,20 @@ Route::middleware('auth:admins')->group(function ()
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::post('/admin/store', [AdminController::class, 'store'])->name('storeOwner');
     Route::get('/admin/detail/{owner_id}', [AdminController::class, 'detail'])->name('detailOwner');
+});
+
+Route::prefix('owner')->group(function ()
+{
+    Route::get('login', [AuthOwnerController::class, 'showLoginForm'])->name('showOwnerLogin');
+    Route::post('login', [AuthOwnerController::class, 'login'])->name('ownerLogin');
+
+});
+
+Route::middleware('auth:owners')->group(function ()
+{
+    Route::post('/owner/logout', [AuthOwnerController::class, 'logout'])->name('ownerLogout');
+    Route::get('/owner', [OwnerController::class, 'index'])->name('owner');
+    Route::post('/owner/store', [OwnerController::class, 'store'])->name('storeShop');
+    Route::get('/owner/show/{id}', [OwnerController::class, 'show'])->name('showShop');
+    Route::post('/owner/edit', [OwnerController::class, 'edit'])->name('editShop');
 });
