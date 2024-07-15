@@ -9,6 +9,7 @@
         <nav class="modal__nav">
             <ul class="modal__nav--list">
                 <li class="modal__nav--item"><a href="{{ route('admin') }}">Owner一覧</a></li>
+                <li class="modal__nav--item"><a href="{{ route('admin.send-notification') }}">お知らせMail作成</a></li>
                 <li class="modal__nav--item">
                     <form class="form" action="{{ route('adminLogout') }}" method="post">
                         @csrf

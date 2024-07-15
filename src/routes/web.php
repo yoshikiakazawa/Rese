@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthOwnerController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,8 @@ Route::middleware('auth:admins')->group(function ()
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::post('/admin/store', [AdminController::class, 'store'])->name('storeOwner');
     Route::get('/admin/detail/{owner_id}', [AdminController::class, 'detail'])->name('detailOwner');
+    Route::get('/admin/send-notification', [NotificationController::class, 'showForm'])->name('admin.send-notification');
+    Route::post('/admin/send-notification', [NotificationController::class, 'sendNotification']);
 });
 
 Route::prefix('owner')->group(function ()
