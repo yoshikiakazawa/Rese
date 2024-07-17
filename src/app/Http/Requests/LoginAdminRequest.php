@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminRequest extends FormRequest
+class LoginAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'adminid' => 'required|min:8',
-            'password' => 'required|min:8'
+            'adminid' => 'required',
+            'password' => 'required'
         ];
     }
 
@@ -34,8 +34,6 @@ class AdminRequest extends FormRequest
         return [
             'adminid.required' => 'adminidは、入力必須です',
             'password.required' => 'passwordは、入力必須です',
-            'adminid.min' => 'adminidは、8文字以上です',
-            'password.min' => 'passwordは、8文字以上です',
         ];
     }
 }
