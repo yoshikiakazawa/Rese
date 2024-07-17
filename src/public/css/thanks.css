@@ -32,12 +32,18 @@
     flex-direction: column;
 }
 
-.thanks__content p {
+.thanks__content--message {
     font-size: 24px;
     margin-bottom: 40px;
 }
 
-.thanks__content a {
+.thanks__content--instruction {
+    font-size: 16px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.thanks__content--btn {
     font-size: 16px;
     text-decoration: none;
     background-color: #387ADF;
@@ -66,7 +72,7 @@
         height: 200px;
     }
 
-    .thanks__content p {
+    .thanks__content--message {
         font-size: 18px;
     }
 

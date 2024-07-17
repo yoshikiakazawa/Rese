@@ -23,10 +23,8 @@ class EmailVerificationNotification extends Notification
     {
         $url = url('/verify-email/' . $this->token);
 
-        return (new MailMessage)
-                    ->subject('Verify Your Email Address')
-                    ->line('以下のボタンをクリックして、メールアドレスを確認してください。')
-                    ->action('Verify Email', $url)
-                    ->line('このメールに心当たりがない場合は、無視してください。');
+        return (new \Illuminate\Notifications\Messages\MailMessage)
+                ->subject('[Rese]メールアドレスのご確認')
+                ->view('emails.verify_email', ['url' => $url]);
     }
 }
