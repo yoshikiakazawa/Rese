@@ -19,7 +19,7 @@ class ReservationController extends Controller
             'time' => $request->time,
             'number' => $request->number,
         ]);
-        return view('reservation_thanks');
+        return view('reservation.thanks');
     }
     public function edit($id)
     {
@@ -32,7 +32,7 @@ class ReservationController extends Controller
             '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
             '20:00', '20:30', '21:00', '21:30', '22:00'
         ];
-        return view('reservation-edit', compact('reservation','shop','times', 'formattedTime'));
+        return view('reservation.edit', compact('reservation','shop','times', 'formattedTime'));
     }
 
     public function update (ReservationRequest $request) {

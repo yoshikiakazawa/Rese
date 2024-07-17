@@ -10,7 +10,8 @@
 <div class="thanks">
     <div class="thanks-parent">
         <div class="thanks__content">
-            <p>ご予約ありがとうございます</p>
+            <p class="thanks__content--message">ご予約ありがとうございます</p>
+            <a class="thanks__content--btn" href="{{ route('index') }}">戻る</a>
         </div>
     </div>
 </div>
