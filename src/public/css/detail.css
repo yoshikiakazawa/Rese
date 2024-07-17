@@ -91,8 +91,22 @@ img {
     font-weight: 600;
 }
 
+.reservation-form__select {
+    position: relative;
+}
+
 .reservation-form__select select {
     width: 230px;
+}
+
+.reservation-form__select::after {
+    content: "▼";
+    position: absolute;
+    left: 198px;
+    top: 10px;
+    pointer-events: none;
+    color: #000;
+    font-size: 16px;
 }
 
 .reservation-form__error {
@@ -196,6 +210,12 @@ img {
 
     .reservation-form__select select {
         width: 140px;
+    }
+
+    .reservation-form__select::after {
+        left: 115px;
+        top: 7px;
+        font-size: 14px;
     }
 
     .reservation-form__error {
