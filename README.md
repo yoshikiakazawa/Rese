@@ -4,21 +4,60 @@
 
 ## 機能一覧
 
-**ログイン機能**
+# 一般ユーザーの機能
 - 会員登録
-- ログイン
-- ログアウト
-**ユーザー情報取得**
-- ユーザー飲食店お気に入り一覧取得
-- ユーザー飲食店予約情報取得
-**飲食店ページ**
-- 飲食店一覧取得
-- 飲食店詳細取得
-- エリアで検索
-- ジャンルで検索
-- 店名で検索
+- ログイン・ログアウト
+- http://localhost/login
+- ダミーデータ
+- Email:test@example.com
+- Password:12345678
+
+**飲食店一覧ページ（一部ログイン不要）**
+- エリア、ジャンル、店名で検索
 - 飲食店お気に入り追加、削除
-- 飲食店予約情報追加、削除
+
+**飲食店詳細ページ（一部ログイン不要）**
+- 飲食店予約
+
+**一般ユーザーマイページ**
+- 飲食店お気に入り登録一覧取得、解除
+- 飲食店予約情報取得、修正、削除
+- 予約店でのチェックイン、決済
+- 来店後評価、コメント
+
+# shopオーナーの機能
+- ログイン・ログアウト
+- http://localhost/owner/login
+- ダミーデータ
+- Owner ID:owner001
+- Password:owner001
+
+- Owner ID:owner002
+- Password:owner002
+
+- Owner ID:owner003
+- Password:owner003
+
+- Owner ID:owner004
+- Password:owner004
+
+- Owner ID:owner005
+- Password:owner005
+
+**shop一覧ページ**
+- shop情報登録、修正
+- 予約一覧取得
+
+# 管理者の機能
+- ログイン・ログアウト
+- http://localhost/admin/login
+- ダミーデータ
+- Owner ID:admin001
+- Password:admin001
+
+**shopオーナー一覧ページ**
+- shopオーナー情報取得、登録
+- 一般ユーザーへお知らせメール送信
 
 ## 環境構築
 
@@ -79,23 +118,24 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-5. アプリケーションキーの作成
-
-```bash
-php artisan key:generate
-```
-
-6. マイグレーションの実行
+5. マイグレーションの実行
 
 ```bash
 php artisan migrate
 ```
 
-### テスト用ダミーデータ
+6. シーダーの実行
 
 ```bash
 php artisan db:seed
 ```
+
+7. アプリケーションキーの作成
+
+```bash
+php artisan key:generate
+```
+
 
 ## 使用技術(実行環境)
 
@@ -106,13 +146,12 @@ php artisan db:seed
 ## テーブル設計
 
 ![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
 
 ## ER 図
 
 ![alt text](image.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
 ## URL
 
