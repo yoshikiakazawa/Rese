@@ -1,0 +1,124 @@
+.content {
+    max-width: 1230px;
+    width: calc(100% - 64px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    gap: 20px;
+}
+
+.pastHistory {
+    grid-row: 2/3;
+}
+
+.pastHistory__ttl {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.pastHistory__ttl--link {
+    color: black;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.pastHistory__ttl--h2 {
+    font-size: 32px;
+}
+
+.pastHistoryDetail__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    gap: 32px;
+}
+
+.pastHistoryDetail__card {
+    background-color: #387ADF;
+    color: rgb(255, 255, 255);
+    margin-bottom: 1em;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.pastHistoryDetail__ttl {
+    width: 230px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.pastHistoryDetail__card--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 1em;
+}
+
+.pastHistoryDetail__card--group {
+    display: flex;
+}
+
+.pastHistoryDetail__card--group-header {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.pastHistoryDetail__card--group-comment-text {
+    margin-top: 10px;
+}
+
+.pastHistoryDetail__card--group-comment {
+    background-color: rgb(255, 255, 255);
+    color: #387ADF;
+    border-radius: 6px;
+    height: 130px;
+    padding: 4px;
+}
+
+.pastHistoryDetail__card--group-comment-text {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        width: calc(100% - 48px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content {
+        width: calc(100% - 16px);
+        grid-template-rows: 40px 1fr;
+    }
+
+    .pastHistory__ttl--link {
+        color: black;
+        padding: 4px;
+        border-radius: 4px;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .pastHistory__ttl--h2 {
+        font-size: 24px;
+    }
+
+    .pastHistoryDetail__card--group-header,
+    .pastHistoryDetail__card--group-comment-header {
+        width: 80px;
+        font-size: 14px;
+    }
+
+    .pastHistoryDetail__card--group-text {
+        font-size: 14px;
+    }
+
+}

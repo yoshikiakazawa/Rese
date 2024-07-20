@@ -76,5 +76,7 @@ Route::middleware('auth:owners')->group(function ()
     Route::get('/owner', [OwnerController::class, 'index'])->name('owner');
     Route::post('/owner/store', [OwnerController::class, 'store'])->name('storeShop');
     Route::get('/owner/show/{id}', [OwnerController::class, 'show'])->name('showShop');
+    Route::get('/owner/history/{id}', [OwnerController::class, 'history'])->name('reservationHistory');
+    Route::get('/owner/past-history/{id}', [OwnerController::class, 'pastHistory'])->name('reservationPastHistory');
     Route::post('/owner/edit', [OwnerController::class, 'edit'])->name('editShop');
 });

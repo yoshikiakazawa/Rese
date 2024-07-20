@@ -8,10 +8,12 @@ use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Reservation;
 use App\Http\Requests\StoreShopRequest;
 use App\Http\Requests\EditShopRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class OwnerController extends Controller
 {
@@ -53,5 +55,32 @@ class OwnerController extends Controller
         $oldShop->overview = $request->overview;
         $oldShop->save();
         return redirect()->back()->with('message', 'shopを修正しました。');
+    }
+
+    public function history($id) {
+        $owner = Auth::user();
+        $shop = Shop::where('id', $id)->with(['areas', 'genres'])->first();
+        $today = Carbon::now()->format('Y-m-d');
+        $reservations = Reservation::where('shop_id', $id)->with('users')
+        ->where('date','>',$today)
+        ->orWhere('shop_id', $id)->Where('date','=',$today)->orderBy('date')
+        ->orderBy('time')
+        ->get();
+        return view('owner.history', compact('owner', 'shop', 'reservations'));
+    }
+
+    public function pastHistory($id) {
+        $owner = Auth::user();
+        $shop = Shop::where('id', $id)->with(['areas', 'genres'])->first();
+        $today = Carbon::now()->format('Y-m-d');
+        $currentTime = Carbon::now()->format('H:i:s');
+        $reservations = Reservation::where('shop_id', $id)->with('users')
+        ->where('date','<',$today)
+        ->orWhere('shop_id', $id)->Where('date','=',$today)
+        ->where('time','<',$currentTime)->orderBy('date', 'desc')
+        ->orderBy('time', 'desc')
+        ->get();
+
+        return view('owner.past-history', compact('owner', 'shop', 'reservations'));
     }
 }
