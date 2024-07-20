@@ -1,16 +1,18 @@
 # サービス名
+## Rese（リーズ）
 
 飲食店予約サービス
 
 ## 機能一覧
 
-# 一般ユーザーの機能
+### 一般ユーザーの機能
 - 会員登録
 - ログイン・ログアウト
-- http://localhost/login
-- ダミーデータ
-- Email:test@example.com
-- Password:12345678
+
+http://localhost/login
+ダミーデータ
+Email:test@example.com
+Password:12345678
 
 **飲食店一覧ページ（一部ログイン不要）**
 - エリア、ジャンル、店名で検索
@@ -25,35 +27,37 @@
 - 予約店でのチェックイン、決済
 - 来店後評価、コメント
 
-# shopオーナーの機能
+### shopオーナーの機能
 - ログイン・ログアウト
-- http://localhost/owner/login
-- ダミーデータ
-- Owner ID:owner001
-- Password:owner001
 
-- Owner ID:owner002
-- Password:owner002
+http://localhost/owner/login
+ダミーデータ
+Owner ID:owner001
+Password:owner001
 
-- Owner ID:owner003
-- Password:owner003
+Owner ID:owner002
+Password:owner002
 
-- Owner ID:owner004
-- Password:owner004
+Owner ID:owner003
+Password:owner003
 
-- Owner ID:owner005
-- Password:owner005
+Owner ID:owner004
+Password:owner004
+
+Owner ID:owner005
+Password:owner005
 
 **shop一覧ページ**
 - shop情報登録、修正
 - 予約一覧取得
 
-# 管理者の機能
+### 管理者の機能
 - ログイン・ログアウト
-- http://localhost/admin/login
-- ダミーデータ
-- Owner ID:admin001
-- Password:admin001
+
+http://localhost/admin/login
+ダミーデータ
+Owner ID:admin001
+Password:admin001
 
 **shopオーナー一覧ページ**
 - shopオーナー情報取得、登録
