@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
-use App\Models\Area;
-use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -15,11 +13,8 @@ class UserDataController extends Controller
 {
     public function myPage() {
         $today = Carbon::now()->format('Y-m-d');
-        $currentTime = Carbon::now()->format('H:i:s');
         $user = Auth::user();
         $shops = Shop::with(['areas', 'genres'])->get();
-        $areas = Area::all();
-        $genres = Genre::all();
         $reservations = Reservation::where('user_id', $user->id)
         ->where('date','>',$today)
         ->orWhere('user_id', $user->id)->Where('date','=',$today)->orderBy('date')
@@ -30,7 +25,7 @@ class UserDataController extends Controller
             $favorites = Favorite::where('user_id', Auth::id())->pluck('shop_id')->toArray();
         }
         $favoriteShops = Shop::whereIn('id', $favorites)->get();
-        return view('mypage', compact('user','shops', 'areas', 'genres', 'reservations','favorites', 'favoriteShops'));
+        return view('mypage', compact('user','shops', 'reservations','favorites', 'favoriteShops'));
     }
 
     public function myPageHistory (){
