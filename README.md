@@ -10,9 +10,8 @@
 - ログイン・ログアウト
 
 http://localhost/login
-ダミーデータ
-Email:test@example.com
-Password:12345678
+***ダミーデータ***
+Email:test@example.com　Password:12345678
 
 **飲食店一覧ページ（一部ログイン不要）**
 - エリア、ジャンル、店名で検索
@@ -31,21 +30,16 @@ Password:12345678
 - ログイン・ログアウト
 
 http://localhost/owner/login
-ダミーデータ
-Owner ID:owner001
-Password:owner001
+***ダミーデータ***
+Owner ID:owner001　Password:owner001
 
-Owner ID:owner002
-Password:owner002
+Owner ID:owner002　Password:owner002
 
-Owner ID:owner003
-Password:owner003
+Owner ID:owner003　Password:owner003
 
-Owner ID:owner004
-Password:owner004
+Owner ID:owner004　Password:owner004
 
-Owner ID:owner005
-Password:owner005
+Owner ID:owner005　Password:owner005
 
 **shop一覧ページ**
 - shop情報登録、修正
@@ -55,9 +49,8 @@ Password:owner005
 - ログイン・ログアウト
 
 http://localhost/admin/login
-ダミーデータ
-Owner ID:admin001
-Password:admin001
+***ダミーデータ***
+Owner ID:admin001　Password:admin001
 
 **shopオーナー一覧ページ**
 - shopオーナー情報取得、登録
