@@ -70,15 +70,25 @@ use Carbon\Carbon;
                     </td>
                 </tr>
             </table>
-            <div class="reservation-status__qr">
-                <label for="qr-modal__toggle-{{$reservation->id}}" class="qr-modal__button--open">チェックイン</label>
-                <input type="checkbox" id="qr-modal__toggle-{{$reservation->id}}" class="qr-modal__toggle">
-                <div class="qr-modal">
-                    <label for="qr-modal__toggle-{{$reservation->id}}" class="qr-modal__button--close"><i
+            <div class="reservation-status__modal">
+                <label for="statusModal__toggle-{{$reservation->id}}"
+                    class="statusModal__button--open">チェックイン/決済</label>
+                <input type="checkbox" id="statusModal__toggle-{{$reservation->id}}" class="statusModal__toggle">
+                <div class="statusModal">
+                    <label for="statusModal__toggle-{{$reservation->id}}" class="statusModal__button--close"><i
                             class="bi bi-x-circle"></i></label>
-                    <span class="qr-modal__span">
+                    <span class="statusModal__qr">
                         {!! QrCode::size(100)->generate( $reservation->id ); !!}
                     </span>
+                    <form class="statusModal__pay" action="{{ route('pay') }}" method="POST">
+                        {{ csrf_field() }}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="{{ env('STRIPE_KEY') }}" data-amount="1000" data-name="Stripe Demo"
+                            data-label="決済をする" data-description="Online course about integrating Stripe"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto" data-currency="JPY">
+                        </script>
+                    </form>
                 </div>
             </div>
         </div>

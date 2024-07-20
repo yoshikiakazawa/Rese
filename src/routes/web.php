@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthOwnerController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\StripePaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reservation/destroy',[ReservationController::class, 'destroy'])->name('destroyReservation');
     Route::get('/mypage/history', [UserDataController::class,'myPageHistory'])->name('history');
     Route::post('/mypage/history/rank', [UserDataController::class,'rank'])->name('rank');
+    Route::post('/payment', [StripePaymentsController::class, 'payment'])->name('pay');
 });
 
 Route::prefix('admin')->group(function ()
