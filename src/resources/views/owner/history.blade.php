@@ -18,14 +18,16 @@ use Carbon\Carbon;
             <a class="shopDetail__ttl--link" href="{{route('owner')}}"><i class="bi bi-chevron-left"></i></a>
             <h2 class="shopDetail__ttl--h2">{{ $shop->shop_name }}</h2>
         </div>
-        <div class="shopDetail__img">
-            <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="600" height="400">
-        </div>
-        <div class="shopDetail__tag">
-            <p class="shopDetail__tag--p">#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
-        </div>
-        <div class="shopDetail__overview">
-            <p class="shopDetail__overview--p">{{ $shop->overview }}</p>
+        <div class="shopDetail__card">
+            <div class="shopDetail__img">
+                <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="600" height="400">
+            </div>
+            <div class="shopDetail__tag">
+                <p class="shopDetail__tag--p">#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+            </div>
+            <div class="shopDetail__overview">
+                <p class="shopDetail__overview--p">{{ $shop->overview }}</p>
+            </div>
         </div>
     </div>
     <div class="reservationDetail">

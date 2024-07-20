@@ -35,7 +35,7 @@
                 <div class="card-content__tag">
                     <p>#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
                 </div>
-                <a class="card-content__link--history" href="{{ route('reservationHistory', $shop->id) }}">予約</a>
+                <a class="card-content__link--history" href="{{ route('reservationHistory', $shop->id) }}">予約履歴</a>
             </div>
             <div class="card-content__overview">
                 <p>{{ $shop->overview }}</p>
@@ -45,7 +45,7 @@
         @endif
     </div>
     <div class="container-storeShopForm">
-        <form class="storeShopForm" action="{{ route('storeShop') }}" method="post">
+        <form class="storeShopForm" action="{{ route('storeShop') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="storeShopForm__ttl">
                 <h2>Shop登録</h2>

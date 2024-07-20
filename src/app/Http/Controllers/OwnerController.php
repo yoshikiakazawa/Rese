@@ -14,6 +14,7 @@ use App\Http\Requests\EditShopRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
 
 class OwnerController extends Controller
 {
@@ -26,7 +27,11 @@ class OwnerController extends Controller
     }
 
     public function store(StoreShopRequest $request) {
-        $path = $request->file('image')->store('shops', 's3');
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $path = storage_path('app/public/shops/' . $filename);
+        Image::make($image)->resize(600, 400)->save($path);
+        $path = '/storage/shops/' . $filename;
         $owner = Auth::user();
         Shop::create([
             'owner_id' => $owner->id,
@@ -34,7 +39,7 @@ class OwnerController extends Controller
             'area_id' => $request->area_id,
             'genre_id' => $request->genre_id,
             'overview' => $request->overview,
-            'image_path' => Storage::disk('s3')->url($path),
+            'image_path' => $path,
         ]);
         return redirect()->back()->with('message', 'shopを作成しました。');
     }

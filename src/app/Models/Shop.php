@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-    protected $fillable = ['owner_id', 'shop_name', 'area_id', 'genre_id', 'overview', 'path'];
+    protected $fillable = ['owner_id', 'shop_name', 'area_id', 'genre_id', 'overview', 'image_path'];
 
     public function owners()
     {
