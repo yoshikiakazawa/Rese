@@ -9,8 +9,8 @@
 - 会員登録
 - ログイン・ログアウト
 
-http://localhost/login
-***ダミーデータ***
+http://localhost/login<br>
+ダミーデータ<br>
 Email:test@example.com　Password:12345678
 
 **飲食店一覧ページ（一部ログイン不要）**
@@ -30,15 +30,11 @@ Email:test@example.com　Password:12345678
 - ログイン・ログアウト
 
 http://localhost/owner/login<br>
-***ダミーデータ***
-Owner ID:owner001　Password:owner001
-
-Owner ID:owner002　Password:owner002
-
-Owner ID:owner003　Password:owner003
-
-Owner ID:owner004　Password:owner004
-
+ダミーデータ<br>
+Owner ID:owner001　Password:owner001<br>
+Owner ID:owner002　Password:owner002<br>
+Owner ID:owner003　Password:owner003<br>
+Owner ID:owner004　Password:owner004<br>
 Owner ID:owner005　Password:owner005
 
 **shop一覧ページ**
@@ -48,8 +44,8 @@ Owner ID:owner005　Password:owner005
 ### 管理者の機能
 - ログイン・ログアウト
 
-http://localhost/admin/login
-***ダミーデータ***
+http://localhost/admin/login<br>
+ダミーデータ<br>
 Owner ID:admin001　Password:admin001
 
 **shopオーナー一覧ページ**
