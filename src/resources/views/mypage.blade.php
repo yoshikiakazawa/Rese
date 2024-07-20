@@ -82,15 +82,27 @@ use Carbon\Carbon;
                     </span>
                     <form class="statusModal__pay" action="{{ route('pay') }}" method="POST">
                         {{ csrf_field() }}
+                        <div class="statusModal__pay--amountGroup">
+                            <label for="amount">支払金額:</label>
+                            <input type="number" name="amount" id="amount" value="{{ $reservation->amount }}">
+                            <input type="hidden" name="id" value="{{ $reservation->id }}">
+                        </div>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="{{ env('STRIPE_KEY') }}" data-amount="1000" data-name="Stripe Demo"
-                            data-label="決済をする" data-description="Online course about integrating Stripe"
+                            data-key="{{ env('STRIPE_KEY') }}" data-name="Stripe Demo" data-label="決済をする"
+                            data-description="Online course about integrating Stripe"
                             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                             data-locale="auto" data-currency="JPY">
                         </script>
                     </form>
                 </div>
             </div>
+            @if (session('message'))
+            <script>
+                window.onload = function() {
+            alert('{{ session('message') }}');
+        }
+            </script>
+            @endif
         </div>
         @endforeach
         @endif
