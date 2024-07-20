@@ -29,7 +29,7 @@ Email:test@example.com　Password:12345678
 ### shopオーナーの機能
 - ログイン・ログアウト
 
-http://localhost/owner/login
+http://localhost/owner/login<br>
 ***ダミーデータ***
 Owner ID:owner001　Password:owner001
 
