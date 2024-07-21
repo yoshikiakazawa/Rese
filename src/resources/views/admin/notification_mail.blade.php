@@ -33,8 +33,8 @@
                     <button class="sendMail__form--btn-submit" type="submit">送信</button>
                 </div>
                 <div class="sendMail__form--message">
-                    @if(session('success'))
-                    <p>{{ session('success') }}</p>
+                    @if(session('message'))
+                    <p>{{ session('message') }}</p>
                     @endif
                 </div>
             </div>

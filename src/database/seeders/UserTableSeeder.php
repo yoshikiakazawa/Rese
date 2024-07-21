@@ -20,7 +20,6 @@ class UserTableSeeder extends Seeder
         $param = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',
-            'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),
