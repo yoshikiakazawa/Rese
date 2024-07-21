@@ -26,10 +26,13 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'email_verification_token' => Str::random(60),
         ]);
-
-        $user->notify(new EmailVerificationNotification($user->email_verification_token));
+        try {
+            $user->notify(new EmailVerificationNotification($user->email_verification_token));
+            Auth::login($user);
+        } catch (\Exception $e) {
+            \Log::error('メール送信エラー: ' . $e->getMessage());
+        }
         Auth::login($user);
-
         return redirect()->route('thanks');
     }
 
