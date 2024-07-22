@@ -9,6 +9,9 @@
 @component('components.nav')
 @endcomponent
 @endif
+@php
+use Carbon\Carbon;
+@endphp
 <div class="history__grid-parent">
     <div class="history__login-name">{{$user->name}}さん</div>
     <div class="history">
@@ -108,7 +111,8 @@
                         <tr class="history__table--inner">
                             <th class="history__table--header">Time</th>
                             <td class="history__table--text">
-                                <p class="history__table--text-time">{{ $reservation->time }}</p>
+                                <p class="history__table--text-time">{{
+                                    Carbon::parse($reservation->time)->format('H:i') }}</p>
                             </td>
                         </tr>
                         <tr class="history__table--inner">

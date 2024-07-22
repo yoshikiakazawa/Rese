@@ -82,18 +82,18 @@ use Carbon\Carbon;
                     </span>
                     @if(empty($reservation->payment_status) || $reservation->payment_status === 0)
                     <form class="statusModal__pay" action="{{ route('pay') }}" method="POST">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="statusModal__pay--amountGroup">
-                            <label for="amount">支払金額:</label>
-                            <input type="number" name="amount" id="amount" value="{{ $reservation->amount }}">
+                            <label>支払金額</label>
+                            <p>￥{{ $reservation->amount }}</p>
                             <input type="hidden" name="id" value="{{ $reservation->id }}">
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{ env('STRIPE_KEY') }}" data-name="Stripe Demo" data-label="決済"
+                                data-description="Online course about integrating Stripe"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto" data-currency="JPY">
+                            </script>
                         </div>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="{{ env('STRIPE_KEY') }}" data-name="Stripe Demo" data-label="決済をする"
-                            data-description="Online course about integrating Stripe"
-                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-locale="auto" data-currency="JPY">
-                        </script>
                     </form>
                     @else
                     <p class="statusModal__pay--text">支払済みです</p>
