@@ -104,6 +104,7 @@ cp .env.example .env
 
 4. .env に以下の環境変数を追加
 
+**DB設定**
 ```text
 DB_CONNECTION=mysql
 DB_HOST=mysql
@@ -112,6 +113,8 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
+
+**mail設定、stripe設定記載**
 
 5. マイグレーションの実行
 
