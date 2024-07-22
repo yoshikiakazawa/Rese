@@ -47,7 +47,7 @@
                 <input type="text" placeholder="name" name="name" value="{{ old('name') }}">
             </div>
             <div class="owner-list__form__message">
-                <p>後からownerが追記可能／空白ok</p>
+                <p>空白ok</p>
             </div>
         </div>
         <div class="owner-list__form--text-group">

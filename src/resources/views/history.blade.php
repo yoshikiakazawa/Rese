@@ -81,7 +81,7 @@ use Carbon\Carbon;
                                             <textarea class="history__modal--table-textarea" name="comment" id="comment"
                                                 cols="10" rows="8" placeholder="コメント頂けると嬉しいです。
                                             必須ではありません。
-                                            "><?php echo htmlspecialchars($reservation->comment); ?></textarea>
+                                            ">{{ $reservation->comment }}</textarea>
                                         </td>
                                     </tr>
                                 </table>
