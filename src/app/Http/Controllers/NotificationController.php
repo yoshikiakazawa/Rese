@@ -19,7 +19,7 @@ class NotificationController extends Controller
     {
         $subject = $request->input('subject');
         $messageContent = $request->input('message');
-        $users = \App\Models\User::all();
+        $users = User::all();
         $emailsSent = false;
 
         foreach ($users as $user) {
