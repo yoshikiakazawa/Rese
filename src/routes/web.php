@@ -81,4 +81,5 @@ Route::middleware('auth:owners')->group(function ()
     Route::get('/owner/history/{id}', [OwnerController::class, 'history'])->name('reservationHistory');
     Route::get('/owner/past-history/{id}', [OwnerController::class, 'pastHistory'])->name('reservationPastHistory');
     Route::post('/owner/edit', [OwnerController::class, 'edit'])->name('editShop');
+    Route::post('/amount', [StripePaymentsController::class, 'amount'])->name('amount');
 });

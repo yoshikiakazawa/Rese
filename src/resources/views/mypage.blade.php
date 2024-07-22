@@ -80,6 +80,7 @@ use Carbon\Carbon;
                     <span class="statusModal__qr">
                         {!! QrCode::size(100)->generate( $reservation->id ); !!}
                     </span>
+                    @if(empty($reservation->payment_status) || $reservation->payment_status === 0)
                     <form class="statusModal__pay" action="{{ route('pay') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="statusModal__pay--amountGroup">
@@ -94,13 +95,16 @@ use Carbon\Carbon;
                             data-locale="auto" data-currency="JPY">
                         </script>
                     </form>
+                    @else
+                    <p class="statusModal__pay--text">支払済みです</p>
+                    @endif
                 </div>
             </div>
             @if (session('message'))
             <script>
                 window.onload = function() {
-            alert('{{ session('message') }}');
-        }
+                    alert('{{ session('message') }}');
+                }
             </script>
             @endif
         </div>

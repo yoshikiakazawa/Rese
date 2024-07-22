@@ -23,6 +23,7 @@ class CreateReservationsTable extends Migration
             $table->integer('rank')->nullable();
             $table->text('comment')->nullable();
             $table->integer('amount')->nullable();
+            $table->boolean('payment_status')->nullable();
             $table->timestamps();
         });
     }

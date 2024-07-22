@@ -30,45 +30,65 @@ use Carbon\Carbon;
             </div>
         </div>
     </div>
-    <div class="reservationDetail">
-        <div class="reservationDetail__ttl">
+    <div class="historyDetail">
+        <div class="historyDetail__ttl">
             <span>予約状況</span>
-            <span class="reservationDetail__ttl--link">過去履歴は<a
+            <span class="historyDetail__ttl--link">過去履歴は<a
                     href="{{ route('reservationPastHistory', $shop->id) }}">コチラ</a></span>
         </div>
         @if ($reservations->isEmpty())
-        <div class="reservationDetail__ttl--empty-message">
+        <div class="historyDetail__ttl--empty-message">
             <p>予約済みの店舗はありません。</p>
         </div>
         @else
-        <div class="reservationDetail__grid">
+        <div class="historyDetail__grid">
             @foreach ($reservations as $index => $reservation)
-            <div class="reservationDetail__card">
-                <div class="reservationDetail__card--header">
-                    <span class="reservationDetail__card--header-ttl">予約 {{ $index + 1 }}</span>
-                    <span class="reservationDetail__card--header-name">{{ $reservation->users->name }}さん</span>
+            <div class="historyDetail__card">
+                <div class="historyDetail__card--header">
+                    <span class="historyDetail__card--header-ttl">予約 {{ $index + 1 }}</span>
+                    <span class="historyDetail__card--header-name">{{ $reservation->users->name }}さん</span>
                 </div>
-                <table class="reservationDetail__card--table">
-                    <tr class="reservationDetail__card--table--inner">
-                        <th class="reservationDetail__card--table--header">Date</th>
-                        <td class="reservationDetail__card--table--text">
-                            <p class="reservationDetail__card--table--text-date">{{ $reservation->date }}</p>
-                        </td>
-                    </tr>
-                    <tr class="reservationDetail__card--table--inner">
-                        <th class="reservationDetail__card--table--header">Time</th>
-                        <td class="reservationDetail__card--table--text">
-                            <p class="reservationDetail__card--table--text-time">{{
-                                Carbon::parse($reservation->time)->format('H:i') }}</p>
-                        </td>
-                    </tr>
-                    <tr class="reservationDetail__card--table--inner">
-                        <th class="reservationDetail__card--table--header">Number</th>
-                        <td class="reservationDetail__card--table--text">
-                            <p class="reservationDetail__card--table--text-number">{{ $reservation->number }}人</p>
-                        </td>
-                    </tr>
-                </table>
+                <div class="historyDetail__card--group">
+                    <label class="historyDetail__card--group-header">Date</label>
+                    <p class="historyDetail__card--group-text">{{ $reservation->date }}</p>
+                </div>
+                <div class="historyDetail__card--group">
+                    <label class="historyDetail__card--group-header">Time</label>
+                    <p class="historyDetail__card--group-text">{{
+                        Carbon::parse($reservation->time)->format('H:i') }}</p>
+                </div>
+                <div class="historyDetail__card--group">
+                    <label class="historyDetail__card--group-header">Number</label>
+                    <p class="historyDetail__card--group-text">{{ $reservation->number }}人</p>
+                </div>
+                <form class="historyDetail__card--form" action="{{ route('amount') }}" method="post">
+                    @csrf
+                    <div class="historyDetail__card--group-status">
+                        <label class="historyDetail__card--group-label-status">支払状況:</label>
+                        <p class="historyDetail__card--group-text-status">
+                            @if(empty($reservation->payment_status) || $reservation->payment_status === 0)
+                            未払い
+                            @else
+                            支払済み
+                            @endif
+                        </p>
+                    </div>
+                    <div class="historyDetail__card--group-amount">
+                        <label for="amount" class="historyDetail__card--group-label">請求金額</label>
+                        <input class="historyDetail__card--group-input" type="text" name="amount" id="amount"
+                            value="{{ $reservation->amount }}" required>
+                        <span>円</span>
+                        <input type="hidden" name="id" value="{{ $reservation->id }}">
+                        <button class="historyDetail__card--btn" type="submit">確定</button>
+                    </div>
+                </form>
+                @if (session('message'))
+                <script>
+                    window.onload = function() {
+                    alert('{{ session('message') }}');
+                }
+                </script>
+                @endif
             </div>
             @endforeach
         </div>

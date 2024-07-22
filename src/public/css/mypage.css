@@ -189,7 +189,8 @@
     margin: 10px;
 }
 
-.statusModal__pay--amountGroup {
+.statusModal__pay--amountGroup,
+.statusModal__pay--text {
     display: flex;
     align-items: center;
     justify-content: center;

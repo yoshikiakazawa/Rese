@@ -50,7 +50,8 @@ Owner ID:admin001　Password:admin001
 
 **shopオーナー一覧ページ**
 - shopオーナー情報取得、登録
-- 一般ユーザーへお知らせメール送信
+
+**一般ユーザーへお知らせメール作成ページ**
 
 ## 環境構築
 
@@ -139,12 +140,12 @@ php artisan key:generate
 ## テーブル設計
 
 ![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
 ## ER 図
 
 ![alt text](image.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
 
 ## URL
 
