@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Mail\ReservationReminder;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class SendReservationReminders extends Command
 {
@@ -27,7 +28,14 @@ class SendReservationReminders extends Command
     {
         $reservations = Reservation::with('users','shops')->whereDate('date', Carbon::today())->get();
         foreach ($reservations as $reservation) {
-            Mail::to($reservation->users->email)->send(new ReservationReminder($reservation));
+            if (!empty($reservation->users->email_verified_at)) {
+                try {
+                    Mail::to($reservation->users->email)->queue(new ReservationReminder($reservation));
+                    Log::info('Reservation reminder sent to: ' . $reservation->users->email);
+                } catch (\Exception $e) {
+                    Log::error('Failed to send reservation reminder to: ' . $reservation->users->email . ' Error: ' . $e->getMessage());
+                }
+            }
         }
 
         return 0;
