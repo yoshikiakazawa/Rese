@@ -25,7 +25,7 @@ class StoreShopRequest extends FormRequest
     {
         return [
             'shop_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3072',
             'area_id' => 'required|integer',
             'genre_id' => 'required|integer',
             'overview' => 'required|string',
@@ -35,12 +35,13 @@ class StoreShopRequest extends FormRequest
     public function messages()
     {
         return [
-            'shop_name.required' => 'ショップ名は必須です。',
-            'image.required' => '画像は必須です。',
-            'image.image' => '画像ファイル形式が無効です。',
-            'area_id.required' => 'エリアは必須です。',
-            'genre_id.required' => 'ジャンルは必須です。',
-            'overview.required' => '概要は必須です。',
+            'shop_name.required' => 'ショップ名は必須です',
+            'image.required' => '画像は必須です',
+            'image.image' => '画像ファイル形式が無効です',
+            'image.max' => 'アップロードサイズ3MB未満です',
+            'area_id.required' => 'エリアは必須です',
+            'genre_id.required' => 'ジャンルは必須です',
+            'overview.required' => '概要は必須です',
         ];
     }
 }

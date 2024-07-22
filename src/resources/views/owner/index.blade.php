@@ -95,7 +95,7 @@
             </div>
             <div class="storeShopForm-group-image">
                 <label for="image">Image</label>
-                <p>形式:jpeg,png,jpg,gif,svg</br>幅:2048px以下</p>
+                <p>形式:jpeg,png,jpg,gif,svg</br>アップロードサイズ:3MB未満</p>
                 <input type="file" name="image" class="storeShopForm-group__input-file">
             </div>
             <div class="storeShopForm-group__error-message">

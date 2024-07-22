@@ -302,6 +302,10 @@
         font-size: 12px;
     }
 
+    .storeShopForm-group-image p {
+        font-size: 10px;
+    }
+
     .storeShopForm-group__input-text,
     .storeShopForm-group__select {
         font-size: 12px;
