@@ -12,6 +12,7 @@ class ReservationReminder extends Mailable
     use Queueable, SerializesModels;
 
     public $reservation;
+    public $shop;
     public $user;
 
     /**
