@@ -156,4 +156,5 @@ php artisan key:generate
 - 開発環境：http://localhost/
 - phpMyAdmin：http://localhost:8080/
 
-- 本番環境：
+- 本番環境：http://3.112.47.90/
+- phpMyAdmin：http://3.112.47.90:8080/
