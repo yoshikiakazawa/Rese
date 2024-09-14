@@ -19,10 +19,10 @@
             <h2 class="detail__ttl--h2">{{ $shop->shop_name }}</h2>
         </div>
         <div class="detail__img">
-            <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="600" height="400">
+            <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="100%">
         </div>
         <div class="detail__tag">
-            <p class="detail__tag--p">#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+            <p class="detail__tag--p">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
         </div>
         <div class="detail__overview">
             <p class="detail__overview--p">{{ $shop->overview }}</p>

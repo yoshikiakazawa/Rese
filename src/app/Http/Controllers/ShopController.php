@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class ShopController extends Controller
 {
     public function index() {
-        $shops = Shop::with(['areas', 'genres'])->get();
+        $shops = Shop::with(['area', 'genre'])->get();
         $areas = Area::all();
         $genres = Genre::all();
         $favorites = [];
@@ -80,7 +80,7 @@ class ShopController extends Controller
 
     public function detail($id)
     {
-        $shop = Shop::findOrFail($id);
+        $shop = Shop::find($id);
         $times = [
             '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
             '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',

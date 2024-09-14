@@ -20,7 +20,7 @@ class OwnerController extends Controller
 {
     public function index() {
         $owner = Auth::user();
-        $shops = Shop::where('owner_id', $owner->id)->with(['areas', 'genres'])->get();
+        $shops = Shop::where('owner_id', $owner->id)->with(['area', 'genre'])->get();
         $areas = Area::all();
         $genres = Genre::all();
         return view('owner.index', compact('owner', 'shops', 'areas', 'genres'));
@@ -46,7 +46,7 @@ class OwnerController extends Controller
 
     public function show($id) {
         $owner = Auth::user();
-        $shop = Shop::where('id', $id)->with(['areas', 'genres'])->first();
+        $shop = Shop::where('id', $id)->with(['area', 'genre'])->first();
         $areas = Area::all();
         $genres = Genre::all();
         return view('owner.show', compact('owner', 'shop', 'areas', 'genres'));
@@ -64,9 +64,9 @@ class OwnerController extends Controller
 
     public function history($id) {
         $owner = Auth::user();
-        $shop = Shop::where('id', $id)->with(['areas', 'genres'])->first();
+        $shop = Shop::where('id', $id)->with(['area', 'genre'])->first();
         $today = Carbon::now()->format('Y-m-d');
-        $reservations = Reservation::where('shop_id', $id)->with('users')
+        $reservations = Reservation::where('shop_id', $id)->with('user')
         ->where('date','>',$today)
         ->orWhere('shop_id', $id)->Where('date','=',$today)->orderBy('date')
         ->orderBy('time')
@@ -76,10 +76,10 @@ class OwnerController extends Controller
 
     public function pastHistory($id) {
         $owner = Auth::user();
-        $shop = Shop::where('id', $id)->with(['areas', 'genres'])->first();
+        $shop = Shop::where('id', $id)->with(['area', 'genre'])->first();
         $today = Carbon::now()->format('Y-m-d');
         $currentTime = Carbon::now()->format('H:i:s');
-        $reservations = Reservation::where('shop_id', $id)->with('users')
+        $reservations = Reservation::where('shop_id', $id)->with('user')
         ->where('date','<',$today)
         ->orWhere('shop_id', $id)->Where('date','=',$today)
         ->where('time','<',$currentTime)->orderBy('date', 'desc')

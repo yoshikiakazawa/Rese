@@ -47,7 +47,7 @@ use Carbon\Carbon;
                 <tr class="reservation-status__table--inner">
                     <th class="reservation-status__table--header">Shop</th>
                     <td class="reservation-status__table--text">
-                        <p class="reservation-status__table--text-shop">{{ $reservation->shops->shop_name }}</p>
+                        <p class="reservation-status__table--text-shop">{{ $reservation->shop->shop_name }}</p>
                     </td>
                 </tr>
                 <tr class="reservation-status__table--inner">
@@ -135,8 +135,8 @@ use Carbon\Carbon;
                             <h2 class="favorite-shop__card--ttl-h2">{{ $favoriteShop->shop_name }}</h2>
                         </div>
                         <div class="tag">
-                            <p class="favorite-shop__card--tag">#{{ $favoriteShop->areas->name }}
-                                #{{$favoriteShop->genres->name }}</p>
+                            <p class="favorite-shop__card--tag">#{{ $favoriteShop->area->name }}
+                                #{{$favoriteShop->genre->name }}</p>
                         </div>
                         <div class="favorite-shop__card--button">
                             <a class="favorite-shop__card--button--link"

@@ -33,7 +33,7 @@
             </div>
             <div class="card-content__flex">
                 <div class="card-content__tag">
-                    <p>#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+                    <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
                 </div>
                 <a class="card-content__link--history" href="{{ route('reservationHistory', $shop->id) }}">予約履歴</a>
             </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="storeShopForm-group-image">
                 <label for="image">Image</label>
-                <p>形式:jpeg,png,jpg,gif,svg</br>アップロードサイズ:3MB未満</p>
+                <p>形式:png,jpg</br>アップロードサイズ:2MB以下</p>
                 <input type="file" name="image" class="storeShopForm-group__input-file">
             </div>
             <div class="storeShopForm-group__error-message">

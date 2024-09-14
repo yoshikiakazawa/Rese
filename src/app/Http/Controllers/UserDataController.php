@@ -14,7 +14,7 @@ class UserDataController extends Controller
     public function myPage() {
         $today = Carbon::now()->format('Y-m-d');
         $user = Auth::user();
-        $shops = Shop::with(['areas', 'genres'])->get();
+        $shops = Shop::with(['area', 'genre'])->get();
         $reservations = Reservation::where('user_id', $user->id)
         ->where('date','>',$today)
         ->orWhere('user_id', $user->id)->Where('date','=',$today)->orderBy('date')
@@ -32,7 +32,7 @@ class UserDataController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $currentTime = Carbon::now()->format('H:i:s');
         $user = Auth::user();
-        $shops = Shop::with(['areas', 'genres'])->get();
+        $shops = Shop::with(['area', 'genre'])->get();
         $reservations = Reservation::where('user_id', $user->id)
         ->where('date','<',$today)
         ->orWhere('user_id', $user->id)->Where('date','=',$today)

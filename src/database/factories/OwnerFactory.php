@@ -9,8 +9,8 @@ use Illuminate\Support\Carbon;
 
 class OwnerFactory extends Factory
 {
-    private static $ownerIdCounter = 0;
-    private static $ownerIds = ['owner001', 'owner002', 'owner003', 'owner004', 'owner005'];
+    private static $login_owner_idCounter = 0;
+    private static $login_owner_ids = ['owner001', 'owner002', 'owner003', 'owner004', 'owner005'];
     /**
      * Define the model's default state.
      *
@@ -18,12 +18,12 @@ class OwnerFactory extends Factory
      */
     public function definition()
     {
-        $ownerId = self::$ownerIds[self::$ownerIdCounter % count(self::$ownerIds)];
-        self::$ownerIdCounter++;
+        $login_owner_id = self::$login_owner_ids[self::$login_owner_idCounter % count(self::$login_owner_ids)];
+        self::$login_owner_idCounter++;
         return [
-            'ownerid' => $ownerId,
+            'login_owner_id' => $login_owner_id,
             'name' => $this->faker->name(),
-            'password' => Hash::make($ownerId),
+            'password' => Hash::make($login_owner_id),
             'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

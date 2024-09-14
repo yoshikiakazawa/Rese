@@ -17,10 +17,10 @@
             <div class="auth-form__content">
                 <div class="auth-form__content--text">
                     <img src="{{ asset('/images/mail.png') }}">
-                    <input type="text" placeholder="Owner ID" name="ownerid" value="{{ old('ownerid') }}">
+                    <input type="text" placeholder="Owner ID" name="login_owner_id" value="{{ old('login_owner_id') }}">
                 </div>
                 <div class="auth-form__content--error">
-                    @error('ownerid')
+                    @error('login_owner_id')
                     <p>{{ $message }}</p>
                     @enderror
                 </div>

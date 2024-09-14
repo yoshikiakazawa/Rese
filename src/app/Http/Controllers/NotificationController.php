@@ -20,19 +20,9 @@ class NotificationController extends Controller
         $subject = $request->input('subject');
         $messageContent = $request->input('message');
         $users = User::all();
-        $emailsSent = false;
-
         foreach ($users as $user) {
-            if (!empty($user->email_verified_at)) {
-                Mail::to($user->email)->send(new NotificationMail($subject, $messageContent));
-                $emailsSent = true;
-            }
+        Mail::to($user->email)->send(new NotificationMail($subject, $messageContent));
         }
-
-        if ($emailsSent) {
-            return redirect()->route('admin.send-notification')->with('message', 'お知らせメールを送信しました');
-        } else {
-            return redirect()->route('admin.send-notification')->with('message', '認証済みのユーザーが見つかりません');
-        }
+        return redirect()->route('admin.send-notification')->with('message', 'お知らせメールを送信しました');
     }
 }

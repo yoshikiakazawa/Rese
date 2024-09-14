@@ -33,7 +33,7 @@ use Carbon\Carbon;
                 <div class="pastHistoryDetail__card">
                     <div class="pastHistoryDetail__card--header">
                         <span class="pastHistoryDetail__card--header-ttl">予約 {{ $index + 1 }}</span>
-                        <span class="pastHistoryDetail__card--header-name">{{ $reservation->users->name }}さん</span>
+                        <span class="pastHistoryDetail__card--header-name">{{ $reservation->user->name }}さん</span>
                     </div>
                     <div class="pastHistoryDetail__card--group">
                         <label class="pastHistoryDetail__card--group-header">Date</label>

@@ -21,7 +21,7 @@
             </tr>
             @foreach ($owners as $owner)
             <tr class="owner-list__table--row">
-                <th class="owner-list__table--content">{{ $owner->ownerid }}</th>
+                <th class="owner-list__table--content">{{ $owner->login_owner_id }}</th>
                 <th class="owner-list__table--content">{{ $owner->name }}</th>
                 <th class="owner-list__table--content">
                     <a class="owner-list__table--button-link" href="{{ route('detailOwner', $owner->id) }}">一覧</a>
@@ -53,10 +53,10 @@
         <div class="owner-list__form--text-group">
             <div class="owner-list__form--input">
                 <img src="{{ asset('/images/user.png') }}">
-                <input type="text" placeholder="ID" name="ownerid" value="{{ old('ownerid') }}">
+                <input type="text" placeholder="ID" name="login_owner_id" value="{{ old('login_owner_id') }}">
             </div>
             <div class="owner-list__form__error-message">
-                @error('ownerid')
+                @error('login_owner_id')
                 <p>{{ $message }}</p>
                 @enderror
             </div>

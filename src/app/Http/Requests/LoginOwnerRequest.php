@@ -24,7 +24,7 @@ class LoginOwnerRequest extends FormRequest
     public function rules()
     {
         return [
-            'ownerid' => 'required',
+            'login_owner_id' => 'required',
             'password' => 'required'
         ];
     }
@@ -32,7 +32,7 @@ class LoginOwnerRequest extends FormRequest
     public function messages()
     {
         return [
-            'ownerid.required' => 'owneridは、入力必須です',
+            'login_owner_id.required' => 'login_owner_idは、入力必須です',
             'password.required' => 'passwordは、入力必須です',
         ];
     }

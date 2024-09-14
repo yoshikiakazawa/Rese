@@ -41,6 +41,6 @@ class FutureDateTime implements Rule
      */
     public function message()
     {
-        return '過去の日時は選択できません。';
+        return '過去の時間は選択できません。';
     }
 }

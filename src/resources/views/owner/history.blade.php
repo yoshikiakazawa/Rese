@@ -23,7 +23,7 @@ use Carbon\Carbon;
                 <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="600" height="400">
             </div>
             <div class="shopDetail__tag">
-                <p class="shopDetail__tag--p">#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+                <p class="shopDetail__tag--p">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
             </div>
             <div class="shopDetail__overview">
                 <p class="shopDetail__overview--p">{{ $shop->overview }}</p>
@@ -46,7 +46,7 @@ use Carbon\Carbon;
             <div class="historyDetail__card">
                 <div class="historyDetail__card--header">
                     <span class="historyDetail__card--header-ttl">予約 {{ $index + 1 }}</span>
-                    <span class="historyDetail__card--header-name">{{ $reservation->users->name }}さん</span>
+                    <span class="historyDetail__card--header-name">{{ $reservation->user->name }}さん</span>
                 </div>
                 <div class="historyDetail__card--group">
                     <label class="historyDetail__card--group-header">Date</label>

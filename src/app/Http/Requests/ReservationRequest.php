@@ -41,6 +41,7 @@ class ReservationRequest extends FormRequest
             'date.required' => '日付を入力してください',
             'time.required' => '時間を入力してください',
             'number.required' => '人数を入力してください',
+            'date.after_or_equal' => '過去の日付では予約できません。',
         ];
     }
 }

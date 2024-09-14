@@ -50,7 +50,7 @@ use Carbon\Carbon;
                                         <th class="history__modal--table-header">Shop</th>
                                         <td class="history__modal--table-text">
                                             <p class="history__modal--table-text-shop">{{
-                                                $reservation->shops->shop_name }}</p>
+                                                $reservation->shop->shop_name }}</p>
                                         </td>
                                     </tr>
                                     <tr class="history__modal--table-inner">
@@ -99,7 +99,7 @@ use Carbon\Carbon;
                         <tr class="history__table--inner">
                             <th class="history__table--header">Shop</th>
                             <td class="history__table--text">
-                                <p class="history__table--text-shop">{{ $reservation->shops->shop_name }}</p>
+                                <p class="history__table--text-shop">{{ $reservation->shop->shop_name }}</p>
                             </td>
                         </tr>
                         <tr class="history__table--inner">

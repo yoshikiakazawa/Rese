@@ -24,7 +24,7 @@
                     <h2>{{ $shop->shop_name }}</h2>
                 </div>
                 <div class="card-content__tag">
-                    <p>#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+                    <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
                 </div>
                 <div class="card-content__overview">
                     <p>{{ $shop->overview }}</p>

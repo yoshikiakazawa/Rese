@@ -28,12 +28,12 @@ class SendReservationReminders extends Command
     {
         $reservations = Reservation::with('users','shops')->whereDate('date', Carbon::today())->get();
         foreach ($reservations as $reservation) {
-            if (!empty($reservation->users->email_verified_at)) {
+            if (!empty($reservation->user->email_verified_at)) {
                 try {
-                    Mail::to($reservation->users->email)->queue(new ReservationReminder($reservation));
-                    Log::info('Reservation reminder sent to: ' . $reservation->users->email);
+                    Mail::to($reservation->user->email)->queue(new ReservationReminder($reservation));
+                    Log::info('Reservation reminder sent to: ' . $reservation->user->email);
                 } catch (\Exception $e) {
-                    Log::error('Failed to send reservation reminder to: ' . $reservation->users->email . ' Error: ' . $e->getMessage());
+                    Log::error('Failed to send reservation reminder to: ' . $reservation->user->email . ' Error: ' . $e->getMessage());
                 }
             }
         }

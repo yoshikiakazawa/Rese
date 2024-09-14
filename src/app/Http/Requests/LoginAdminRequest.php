@@ -24,7 +24,7 @@ class LoginAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'adminid' => 'required',
+            'login_admin_id' => 'required',
             'password' => 'required'
         ];
     }
@@ -32,7 +32,7 @@ class LoginAdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'adminid.required' => 'adminidは、入力必須です',
+            'login_admin_id.required' => 'login_admin_idは、入力必須です',
             'password.required' => 'passwordは、入力必須です',
         ];
     }

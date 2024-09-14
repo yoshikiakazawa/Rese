@@ -38,14 +38,14 @@ class AuthController extends Controller
 
     public function verifyEmail($token)
     {
-        $user = User::where('email_verification_token', $token)->firstOrFail();
+        $user = User::where('email_verification_token', $token)->first();
         $user->email_verified_at = now();
         $user->email_verification_token = null;
         $user->save();
 
         Auth::login($user);
 
-        return redirect()->route('index')->with('success', 'Your email has been verified!');
+        return redirect()->route('index');
     }
 
     public function thanks()

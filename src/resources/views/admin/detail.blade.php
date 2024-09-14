@@ -11,8 +11,7 @@
 <div class="owner-detail">
     <div class="owner-detail__ttl">
         <div class="owner-detail__ttl--header">
-            <a class="owner-detail__ttl--header-link" href="{{ route('admin') }}"><i
-                    class="bi bi-chevron-left"></i></a>
+            <a class="owner-detail__ttl--header-link" href="{{ route('admin') }}"><i class="bi bi-chevron-left"></i></a>
             <h2 class="owner-detail__ttl--header-h2">Owner Detail</h2>
         </div>
         <div class="owner-detail__ttl--table">
@@ -23,7 +22,7 @@
                     <th class="owner-detail__ttl--table-header">お名前</th>
                 </tr>
                 <tr class="owner-detail__ttl--table-row">
-                    <th class="owner-detail__ttl--table-content">{{ $owner->ownerid }}</th>
+                    <th class="owner-detail__ttl--table-content">{{ $owner->login_owner_id }}</th>
                     <th class="owner-detail__ttl--table-content">{{ $owner->name }}</th>
                 </tr>
             </table>
@@ -39,7 +38,7 @@
                 <h2>{{ $shop->shop_name }}</h2>
             </div>
             <div class="card-content__tag">
-                <p>#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+                <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
             </div>
             <div class="card-content__overview">
                 <p>{{ $shop->overview }}</p>

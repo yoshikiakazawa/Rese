@@ -51,7 +51,7 @@
                         <h2>{{ $shop->shop_name }}</h2>
                     </div>
                     <div class="tag">
-                        <p class="card__tag">#{{ $shop->areas->name }} #{{ $shop->genres->name }}</p>
+                        <p class="card__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
                     </div>
                     <div class="card__button">
                         <a class="card__button--link" href="{{ route('detail', $shop->id) }}">詳しくみる</a>

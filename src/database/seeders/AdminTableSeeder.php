@@ -18,7 +18,7 @@ class AdminTableSeeder extends Seeder
     {
         $param = [
             'name' => '管理者テスト',
-            'adminid' => 'admin001',
+            'login_admin_id' => 'admin001',
             'password' => Hash::make('admin001'),
             'created_at' => Carbon::now(),
         ];

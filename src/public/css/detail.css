@@ -36,10 +36,7 @@
     font-size: 32px;
 }
 
-img {
-    width: 100%;
-    height: auto;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+.detail__img {
     margin-bottom: 32px;
 }
 

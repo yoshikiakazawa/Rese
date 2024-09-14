@@ -220,7 +220,7 @@
 
 .storeShopForm__flash_message,
 .storeShopForm-group__error-message {
-    height: 16px;
+    height: 24px;
     font-size: 12px;
     display: flex;
     align-items: center;

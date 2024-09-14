@@ -24,7 +24,7 @@ class StoreOwnerRequest extends FormRequest
     public function rules()
     {
         return [
-            'ownerid' => 'required|min:8|unique:owners',
+            'login_owner_id' => 'required|min:8|unique:owners',
             'password' => 'required|min:8'
         ];
     }
@@ -32,11 +32,11 @@ class StoreOwnerRequest extends FormRequest
     public function messages()
     {
         return [
-            'ownerid.required' => 'IDは必須です。',
+            'login_owner_id.required' => 'IDは必須です。',
             'password.required' => 'パスワードは必須です。',
-            'ownerid.min' => 'IDは最低8文字以上必要です。',
+            'login_owner_id.min' => 'IDは最低8文字以上必要です。',
             'password.min' => 'パスワードは最低8文字以上必要です。',
-            'ownerid.unique' => 'このIDは既に登録されています。'
+            'login_owner_id.unique' => 'このIDは既に登録されています。'
         ];
     }
 }

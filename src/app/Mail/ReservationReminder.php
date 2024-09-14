@@ -23,8 +23,8 @@ class ReservationReminder extends Mailable
     public function __construct($reservation)
     {
         $this->reservation = $reservation;
-        $this->shop = $reservation->shops;
-        $this->user = $reservation->users;
+        $this->shop = $reservation->shop;
+        $this->user = $reservation->user;
     }
 
     /**

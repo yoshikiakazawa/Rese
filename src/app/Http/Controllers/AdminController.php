@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function store(StoreOwnerRequest $request) {
         Owner::create([
-            'ownerid' => $request->ownerid,
+            'login_owner_id' => $request->login_owner_id,
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(10),
         ]);
@@ -28,7 +28,7 @@ class AdminController extends Controller
     public function detail($id)
     {
         $owner = Owner::findOrFail($id);
-        $shops = Shop::where('owner_id', $id)->with(['areas', 'genres'])->get();
+        $shops = Shop::where('owner_id', $id)->with(['area', 'genre'])->get();
 
         return view('admin.detail', compact('shops', 'owner'));
     }

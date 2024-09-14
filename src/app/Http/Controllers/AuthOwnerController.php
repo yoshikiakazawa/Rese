@@ -16,7 +16,7 @@ class AuthOwnerController extends Controller
 
     public function login(LoginOwnerRequest $request)
     {
-        $credentials = $request->only(['ownerid', 'password']);
+        $credentials = $request->only(['login_owner_id', 'password']);
 
         if (Auth::guard('owners')->attempt($credentials))
         {
