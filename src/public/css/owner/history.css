@@ -1,6 +1,5 @@
 .content {
-    max-width: 1230px;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     height: 100%;
     margin: 0 auto;
     display: grid;

@@ -5,13 +5,8 @@
 @endsection
 
 @section('main')
-@if(Auth::check())
 @component('components.nav')
 @endcomponent
-@else
-@component('components.nav_auth')
-@endcomponent
-@endif
 <div class="content">
     <div class="content__search">
         <form class="search__form" action="/search" method="get">
@@ -43,9 +38,8 @@
         <div class="card-content">
             @foreach ($shops as $shop)
             <div class="practice__card">
-                <div class="card__img">
-                    <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300" height="200">
-                </div>
+                <img class="card__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300"
+                    height="200">
                 <div class="card__article">
                     <div class="card__ttl">
                         <h2>{{ $shop->shop_name }}</h2>

@@ -1,5 +1,4 @@
 .shop-edit {
-    max-width: 1230px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 80px auto;
@@ -7,7 +6,7 @@
 
 .shop-edit__name {
     grid-row: 1/2;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
     font-size: 18px;
     display: flex;

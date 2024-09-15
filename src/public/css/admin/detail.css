@@ -1,12 +1,11 @@
 .owner-detail {
-    max-width: 1230px;
     display: grid;
     grid-template-rows: 80px 50px 1fr;
 }
 
 .owner-detail__ttl {
     grid-row: 2/3;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -47,7 +46,7 @@
 
 .card {
     grid-row: 4/5;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

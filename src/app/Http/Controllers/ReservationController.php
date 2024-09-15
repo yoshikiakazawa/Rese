@@ -21,6 +21,7 @@ class ReservationController extends Controller
         ]);
         return view('reservation.thanks');
     }
+
     public function edit($id)
     {
         $reservation = Reservation::findOrFail($id);

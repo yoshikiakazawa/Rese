@@ -5,10 +5,9 @@
 @endsection
 
 @section('main')
-@if(Auth::check())
 @component('components.nav_owner')
 @endcomponent
-@endif
+
 @php
 use Carbon\Carbon;
 @endphp

@@ -1,6 +1,5 @@
 .auth {
-    width: calc(100% - 64px);
-    max-width: 1230px;
+    width: calc(100% - 10vw);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -42,7 +41,7 @@
 .auth-form__content--text {
     display: flex;
     justify-content: center;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
 }
 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-@component('components.nav_auth')
+@component('components.nav')
 @endcomponent
 <div class="auth">
     <div class="auth-parent">

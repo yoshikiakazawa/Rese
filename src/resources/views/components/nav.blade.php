@@ -9,6 +9,7 @@
         <nav class="modal__nav">
             <ul class="modal__nav--list">
                 <li class="modal__nav--item"><a href="{{ route('index') }}">HOME</a></li>
+                @if( Auth::check() )
                 <li class="modal__nav--item">
                     <form class="form" action="{{ route('logout') }}" method="post">
                         @csrf
@@ -16,6 +17,10 @@
                     </form>
                 </li>
                 <li class="modal__nav--item"><a href="{{ route('mypage') }}">Mypage</a></li>
+                @else
+                <li class="modal__nav--item"><a href="{{ route('showRegister') }}">Registration</a></li>
+                <li class="modal__nav--item"><a href="{{ route('showLogin') }}">Login</a></li>
+                @endif
             </ul>
         </nav>
     </section>

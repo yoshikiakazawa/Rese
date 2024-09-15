@@ -8,106 +8,86 @@
 @if(Auth::check())
 @component('components.nav_owner')
 @endcomponent
-<div class="shop-list">
-    <h2 class="shop-list__ttl">ShopList</h2>
-    <div class="shop-list__name">
-        @if ($owner && $owner->name)
-        <h2>{{ $owner->name }}さん</h2>
-        @endif
-    </div>
-    <div class="card">
+<div class="flex align-items-center justify-center shop-list__ttl">
+    <h2>ShopList</h2>
+    @if ($owner && $owner->name)
+    <h2 class="shop-list__owner-name">owner name:{{ $owner->name }}さん</h2>
+    @endif
+    <div class="flash_message">
         @if ($shops->isEmpty())
-        <div class="card__empty-message">
-            <p>店舗が登録されていません。</p>
-        </div>
-        @else
-        @foreach ($shops as $shop)
-        <div class="card-content">
-            <div class="card-content__img">
-                <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300" height="200">
-            </div>
-            <div class="card-content__ttl">
-                <h2>{{ $shop->shop_name }}</h2>
-                <a class="card-content__link--edit" href="{{ route('showShop', $shop->id) }}"><i
-                        class="bi bi-pencil-square"></a></i>
-            </div>
-            <div class="card-content__flex">
-                <div class="card-content__tag">
-                    <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-                </div>
-                <a class="card-content__link--history" href="{{ route('reservationHistory', $shop->id) }}">予約履歴</a>
-            </div>
-            <div class="card-content__overview">
-                <p>{{ $shop->overview }}</p>
-            </div>
-        </div>
-        @endforeach
+        <p>店舗が登録されていません。</p>
         @endif
-    </div>
-    <div class="container-storeShopForm">
-        <form class="storeShopForm" action="{{ route('storeShop') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="storeShopForm__ttl">
-                <h2>Shop登録</h2>
-            </div>
-            <div class="storeShopForm__flash_message">
-                @if (session('message'))
-                {{ session('message') }}
-                @endif
-            </div>
-            <div class="storeShopForm-group">
-                <label for="shop_name">Name</label>
-                <input type="text" name="shop_name" class="storeShopForm-group__input-text"
-                    value="{{ old('shop_name') }}">
-            </div>
-            <div class="storeShopForm-group__error-message">
-                @error('shop_name')
-                <p>{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="storeShopForm-group">
-                <label for="area_id">Area</label>
-                <select name="area_id" class="storeShopForm-group__select">
-                    @foreach ($areas as $area)
-                    <option value="{{ $area->id }}" {{ old('area_id')==$area->id ? 'selected' : '' }}>{{ $area->name
-                        }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="storeShopForm-group">
-                <label for="genre_id">Genre</label>
-                <select name="genre_id" class="storeShopForm-group__select">
-                    @foreach ($genres as $genre)
-                    <option value="{{ $genre->id }}" {{ old('genre_id')==$genre->id ? 'selected' : '' }}>{{
-                        $genre->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="storeShopForm-group-overview">
-                <label for="overview">Overview</label>
-                <textarea name="overview" rows="10"
-                    class="storeShopForm-group__textarea">{{ old('overview') }}</textarea>
-            </div>
-            <div class="storeShopForm-group__error-message">
-                @error('overview')
-                <p>{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="storeShopForm-group-image">
-                <label for="image">Image</label>
-                <p>形式:png,jpg</br>アップロードサイズ:2MB以下</p>
-                <input type="file" name="image" class="storeShopForm-group__input-file">
-            </div>
-            <div class="storeShopForm-group__error-message">
-                @error('image')
-                <p>{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="storeShopForm__btn">
-                <button type="submit" class="storeShopForm__btn--submit">登録</button>
-            </div>
-        </form>
+        @if (session('message'))
+        {{ session('message') }}
+        @endif
     </div>
 </div>
-@endif
+<div class="flex align-items-center wrap shop-list">
+    <form class="storeShopForm" action="{{ route('storeShop') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <h2 class="storeShopForm__ttl">登録Form</h2>
+        <div class="flex">
+            <label class="storeShopForm__label" for="shop_name">shop_name</label>
+            <input type="text" name="shop_name" class="storeShopForm__input-text" value="{{ old('shop_name') }}">
+        </div>
+        <div class="error-message">
+            @error('shop_name')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flex">
+            <label class="storeShopForm__label" for="area_id">Area</label>
+            <select name="area_id" class="storeShopForm__select">
+                @foreach ($areas as $area)
+                <option value="{{ $area->id }}" {{ old('area_id')==$area->id ? 'selected' : '' }}>{{ $area->name
+                    }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="flex">
+            <label class="storeShopForm__label" for="genre_id">Genre</label>
+            <select name="genre_id" class="storeShopForm__select">
+                @foreach ($genres as $genre)
+                <option value="{{ $genre->id }}" {{ old('genre_id')==$genre->id ? 'selected' : '' }}>{{
+                    $genre->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="flex flex-column">
+            <label class="storeShopForm__label" for="overview">Overview</label>
+            <textarea name="overview" rows="10" class="storeShopForm__textarea">{{ old('overview') }}</textarea>
+        </div>
+        <div class="error-message">
+            @error('overview')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <input class="storeShopForm-image" type="file" name="image">
+        <div class="error-message">
+            @error('image')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <button type="submit" class="storeShopForm__btn--submit">登録</button>
+    </form>
+    @foreach ($shops as $shop)
+    <div class="card-content">
+        <img class="card-content__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300"
+            height="200">
+        <div class="flex align-items-center justify-between card-content__ttl">
+            <h2>{{ $shop->shop_name }}</h2>
+            <a class="card-content__link--edit" href="{{ route('showShop', $shop->id) }}"><i
+                    class="bi bi-pencil-square"></a></i>
+        </div>
+        <div class="flex align-items-center justify-between">
+            <div class="card-content__tag">
+                <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
+            </div>
+            <a class="card-content__link--history" href="{{ route('reservationHistory', $shop->id) }}">予約履歴</a>
+        </div>
+        <p class="card-content__overview">{{ $shop->overview }}</p>
+    </div>
+    @endforeach
+    @endif
+</div>
 @endsection

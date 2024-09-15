@@ -8,6 +8,7 @@
         <div id="close"><i class="bi bi-x"></i></div>
         <nav class="modal__nav">
             <ul class="modal__nav--list">
+                @if( Auth::check() )
                 <li class="modal__nav--item"><a href="{{ route('admin') }}">Owner一覧</a></li>
                 <li class="modal__nav--item"><a href="{{ route('admin.send-notification') }}">お知らせMail作成</a></li>
                 <li class="modal__nav--item">
@@ -16,6 +17,10 @@
                         <button class="modal__nav--button">Logout</button>
                     </form>
                 </li>
+                @else
+                <li class="modal__nav--item"><a href="{{ route('index') }}">HOME</a></li>
+                <li class="modal__nav--item"><a href="{{ route('showLogin') }}">一般Login</a></li>
+                @endif
             </ul>
         </nav>
     </section>

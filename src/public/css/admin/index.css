@@ -1,5 +1,4 @@
 .owner-list {
-    max-width: 1230px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 80px 50px 1fr;
@@ -8,7 +7,7 @@
 .owner-list__heading {
     grid-column: 1/2;
     grid-row: 2/3;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
     font-size: 36px;
     text-align: center;
@@ -42,7 +41,7 @@
 .owner-list__table {
     grid-column: 1/2;
     grid-row: 3/4;
-    width: calc(100% - 64px);
+    width: calc(100% - 10vw);
     margin: 0 auto;
 }
 
