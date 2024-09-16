@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthOwnerController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StripePaymentsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/history', [UserDataController::class,'myPageHistory'])->name('history');
     Route::post('/mypage/history/rank', [UserDataController::class,'rank'])->name('rank');
     Route::post('/payment', [StripePaymentsController::class, 'payment'])->name('pay');
+    Route::get('/review/{shop_id}', [ReviewController::class, 'show'])->name('showReview');
+    Route::post('/review/{shop_id}/store', [ReviewController::class, 'store'])->name('storeReview');
+    Route::post('/review/{id}/edit', [ReviewController::class, 'edit'])->name('editReview');
+    Route::get('/review/{id}/delete', [ReviewController::class, 'destroy'])->name('deleteReview');
 });
 
 Route::prefix('admin')->group(function ()

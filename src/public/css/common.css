@@ -39,9 +39,9 @@ input, textarea, select:focus {
 }
 
 .flash_message {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500;
     color: tomato;
-    text-align: center;
 }
 
 .error-message {

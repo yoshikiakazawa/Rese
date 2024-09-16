@@ -5,25 +5,9 @@
     width: 42%;
 }
 
-.reservation-form {
-    height: 550px;
-    background-color: rgb(48, 93, 255);
-    border-radius: 6px;
-    position: fixed;
-    top: 2rem;
-    right: calc(50% - 45vw);
-    width: 42%;
-    z-index: 1;
-}
-
 @media screen and (min-width: 1200px){
     .detail {
         left: calc(50% - 580px);
-        width: 560px;
-    }
-
-    .reservation-form {
-        right: calc(50% - 580px);
         width: 560px;
     }
 }
@@ -47,6 +31,135 @@
 
 .detail__tag {
     margin-bottom: 32px;
+}
+
+/* 口コミ画面用 */
+.review-detail__ttl {
+    width: 100%;
+    text-align: center;
+    background-color: #387ADF;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    padding: 8px 0;
+    margin: 1rem 0;
+}
+
+.review-detail__form {
+    padding: 1rem 0;
+    border-top: 2px solid #CCC;
+    border-bottom: 2px solid #CCC;
+}
+
+.review-detail__image {
+    width: 120px;
+    height: 60px;
+    position: relative;
+}
+
+.review-detail__image label {
+    top: 40%;
+    left: 25%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.review-detail__image img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.review-detail__image input {
+    opacity: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 30;
+}
+
+.review-detail__btn-box {
+    width: 100%;
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.review-detail__edit-btn {
+    display: inline;
+    margin-top: 8px;
+    color: #000;
+    margin-right: 1rem;
+    border: none;
+    font-family: inherit;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+
+.review-detail__delete-btn {
+    display: inline;
+    margin-top: 8px;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 2px;
+    font-family: inherit;
+    border-bottom: 1px solid #000;
+}
+
+.review-detail__stars {
+    margin: 4px 0;
+}
+
+.star {
+    font-size: 28px;
+    color:rgb(215,215,215);
+    cursor: pointer;
+}
+
+.star-blue {
+    color:#387ADF;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.review-detail__comment {
+    width: 100%;
+    height: 60px;
+    border: none;
+    background: none;
+}
+
+.review-detail__cards {
+    margin: 1rem 0;
+    border-bottom: 2px solid #CCC;
+}
+
+/* 予約フォーム */
+.reservation-form {
+    height: 500px;
+    background-color: rgb(48, 93, 255);
+    border-radius: 6px;
+    position: fixed;
+    top: 2rem;
+    right: calc(50% - 45vw);
+    width: 42%;
+    z-index: 1;
+}
+
+@media screen and (min-width: 1200px){
+    .reservation-form {
+        right: calc(50% - 580px);
+        width: 560px;
+    }
 }
 
 .reservation-form__content {
@@ -100,14 +213,6 @@
     font-size: 16px;
 }
 
-.reservation-form__error {
-    font-size: 14px;
-    color: tomato;
-    display: flex;
-    align-items: start;
-    padding: 4px;
-}
-
 .reservation-data {
     height: 160px;
     width: 100%;
@@ -155,6 +260,12 @@
     display: none;
 }
 
+.review__link-btn {
+    display: block;
+    margin: 1.5rem 0;
+    color: #000;
+}
+
 @media screen and (max-width: 768px) {
     .detail {
         top:80px
@@ -181,8 +292,25 @@
         font-size: 14px;
     }
 
+    .review-detail__btn-box,
+    .review-detail__edit-btn {
+        font-size: 12px;
+    }
+
+    .review-detail__ttl {
+        margin-top: 4rem;
+    }
+
+    .review__link-btn,
+    .review-detail__ttl,
+    .review-detail__form,
+    .review-detail__cards {
+        width:420px;
+        height: auto;
+    }
+
     .reservation-form {
-        height: 450px;
+        height: 420px;
     }
 
     .reservation-form__content {
@@ -218,10 +346,6 @@
         left: 115px;
         top: 7px;
         font-size: 14px;
-    }
-
-    .reservation-form__error {
-        font-size: 12px;
     }
 
     .reservation-data {
@@ -282,15 +406,15 @@
         left: 100px;
     }
 
-    .reservation-form__error {
-        font-size: 9px;
-    }
-
     .detail__tag {
         margin-bottom: 16px;
     }
 
-    .detail__overview {
+    .detail__overview,
+    .review__link-btn,
+    .review-detail__ttl,
+    .review-detail__form,
+    .review-detail__cards {
         width:340px;
         height: auto;
     }
