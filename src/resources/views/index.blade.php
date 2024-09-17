@@ -8,12 +8,22 @@
 @component('components.nav')
 @endcomponent
 <div class="content">
-    <div class="content__search">
+    {{-- 検索、並び替えフォーム --}}
+    <div class="flex search-box">
+        <form class="sort__form" id="sortForm" action="{{ route('index') }}" method="GET">
+            <select name="sort" id="sortSelect">
+                <option value="" disabled selected class="hidden">並び替え:評価高/低</option>
+                <option value="high" {{ request('sort')=='high' ? 'selected' : '' }}>評価の高い順</option>
+                <option value="low" {{ request('sort')=='low' ? 'selected' : '' }}>評価の低い順</option>
+                <option value="random" {{ request('sort')=='random' ? 'selected' : '' }}>ランダム</option>
+            </select>
+        </form>
         <form class="search__form" action="/search" method="get">
             <select class="search__form--select-area" name="area_id" id="area_id">
                 <option value="" {{ request('area_id')=='' ? 'selected' : '' }}>All area</option>
                 @foreach ($areas as $area)
-                <option value="{{ $area->id }}" {{ request('area_id')==$area->id ? 'selected' : '' }}>{{ $area->name }}
+                <option value="{{ $area->id }}" {{ request('area_id')==$area->id ? 'selected' : '' }}>{{ $area->name
+                    }}
                 </option>
                 @endforeach
             </select>
@@ -22,7 +32,8 @@
                 <option value="" {{ request('genre_id')=='' ? 'selected' : '' }}>
                     All genre</option>
                 @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}" {{ request('genre_id')==$genre->id ? 'selected' : '' }}>{{ $genre->name
+                <option value="{{ $genre->id }}" {{ request('genre_id')==$genre->id ? 'selected' : '' }}>{{
+                    $genre->name
                     }}</option>
                 @endforeach
             </select>
@@ -34,8 +45,9 @@
                 placeholder="Search ...">
         </form>
     </div>
-    <div class="card">
-        <div class="card-content">
+    {{-- shop一覧画面 --}}
+    <div class="cards">
+        <div class="cards__grid-parent">
             @foreach ($shops as $shop)
             <div class="practice__card">
                 <img class="card__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300"
@@ -47,7 +59,7 @@
                     <div class="tag">
                         <p class="card__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
                     </div>
-                    <div class="card__button">
+                    <div class="flex justify-between card__button">
                         <a class="card__button--link" href="{{ route('detail', $shop->id) }}">詳しくみる</a>
                         @if( Auth::check() )
                         @php
@@ -60,14 +72,18 @@
                 </div>
             </div>
             @endforeach
-            <script src="/js/heart.js"></script>
         </div>
     </div>
 </div>
-<div class="error__message">
+<div class="error-message">
     @if(isset($message))
     {{ $message }}
     @endif
 </div>
-
+<script src="/js/heart.js" defer></script>
+<script>
+    document.getElementById('sortSelect').addEventListener('change', function() {
+        document.getElementById('sortForm').submit();
+    });
+</script>
 @endsection

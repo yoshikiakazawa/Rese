@@ -12,14 +12,34 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-    public function index() {
-        $shops = Shop::with(['area', 'genre'])->get();
+    public function index(Request $request)
+    {
+        // ソートのパラメータを取得
+        $sort = $request->input('sort', 'high');  // デフォルトは高い順
+
+        // 並び替えのロジック
+        if ($sort == 'high') {
+            $shops = Shop::with('reviews')->get()->sortByDesc(function ($shop) {
+                return $shop->reviews->sum('rank'); // 高評価順
+            });
+        } elseif ($sort == 'low') {
+            $shops = Shop::with('reviews')->get()->sortBy(function ($shop) {
+                $totalRank = $shop->reviews->sum('rank');
+                return $totalRank > 0 ? $totalRank : PHP_INT_MAX;
+            });
+        } elseif ($sort == 'random') {
+            $shops = Shop::inRandomOrder()->get();  // ランダム
+        } else {
+            $shops = Shop::with('reviews')->get();  // デフォルトの並び
+        }
+
         $areas = Area::all();
         $genres = Genre::all();
         $favorites = [];
         if (Auth::check()) {
             $favorites = Favorite::where('user_id', Auth::id())->pluck('shop_id')->toArray();
         }
+
         return view('index', compact('shops', 'areas', 'genres', 'favorites'));
     }
 
