@@ -1,5 +1,5 @@
 <div class="nav">
-    <div class="nav__content">
+    <div class="flex align-items-center nav__content">
         <div id="open"><i class="bi bi-list"></i></div>
         <h1 class="nav__ttl">Rese Admin</h1>
     </div>

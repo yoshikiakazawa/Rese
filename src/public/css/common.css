@@ -54,16 +54,9 @@ input, textarea, select:focus {
     font-size: 32px;
     color: #387ADF;
     position: fixed;
-    top: 0;
+    top: 24px;
     left: calc(50% - 45vw);
     z-index: 999;
-}
-
-.nav__content {
-    display: flex;
-    position: absolute;
-    top: 24px;
-    align-items: center;
 }
 
 .nav__ttl {
