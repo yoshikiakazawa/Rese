@@ -11,22 +11,15 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateShopController extends Controller
 {
-    public function upload(Request $request)
-{
-    // ロケールを設定(日本語に設定)
+    public function upload(Request $request){
     setlocale(LC_ALL, 'ja_JP.UTF-8');
-
-    // アップロードしたファイルを取得
     $uploaded_file = $request->file('csvFile');
 
     if (!$uploaded_file || !$uploaded_file->isValid()) {
         return redirect()->back()->withErrors('ファイルがアップロードされていないか、無効です。');
     }
 
-    // アップロードしたファイルの絶対パスを取得
     $file_path = $uploaded_file->path();
-
-    // SplFileObjectを生成
     $file = new SplFileObject($file_path);
 
     if (!$file->isReadable()) {
@@ -35,7 +28,7 @@ class CreateShopController extends Controller
 
     $file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
 
-    $row_count = 0; // 1行目がヘッダーの場合は0から始める
+    $row_count = 0;
 
     $data = [];
 
@@ -53,16 +46,13 @@ class CreateShopController extends Controller
             continue;
         }
 
-        // 最終行の処理(最終行が空っぽの場合の対策)
         if ($row === [null]) continue;
 
-        // ヘッダーをスキップするための処理
         if ($row_count === 0) {
             $row_count++;
             continue;
         }
 
-        // バリデーションチェック
         if (empty($row[0]) || empty($row[1]) || empty($row[2]) || empty($row[3]) || empty($row[4])) {
             return redirect()->back()->withErrors('全ての項目は必須です。');
         }
@@ -83,13 +73,11 @@ class CreateShopController extends Controller
             return redirect()->back()->withErrors('店舗概要は400文字以内で入力してください。');
         }
 
-        // 画像URLの拡張子チェック
         $image_extension = pathinfo($row[4], PATHINFO_EXTENSION);
         if (!in_array(strtolower($image_extension), ['jpg', 'jpeg', 'png'])) {
             return redirect()->back()->withErrors('画像URLはjpgまたはpng形式のみ対応しています。');
         }
 
-        // CSVの文字コードがSJISと仮定して変換する
         $encoding = mb_detect_encoding($row[0], ['SJIS', 'UTF-8'], true);
         if ($encoding === false) {
             return redirect()->back()->withErrors('ファイルのエンコーディングが不明です。');
@@ -104,15 +92,12 @@ class CreateShopController extends Controller
             'image_path' => mb_convert_encoding($row[4], 'UTF-8', $encoding),
         ];
 
-        dd($data);
-
         $row_count++;
     }
 
-    // データベースへの挿入
     Shop::insert($data);
 
-    return redirect()->back()->with('flash-message', '登録しました');
+    return redirect()->back()->with('flash-message', 'shop登録しました');
 }
 
 }
