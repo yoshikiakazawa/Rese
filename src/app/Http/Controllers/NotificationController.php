@@ -23,6 +23,6 @@ class NotificationController extends Controller
         foreach ($users as $user) {
         Mail::to($user->email)->send(new NotificationMail($subject, $messageContent));
         }
-        return redirect()->route('admin.send-notification')->with('message', 'お知らせメールを送信しました');
+        return redirect()->route('admin.send-notification')->with('flash-message', 'お知らせメールを送信しました');
     }
 }

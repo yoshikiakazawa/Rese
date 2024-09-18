@@ -18,13 +18,13 @@ class StripePaymentsController extends Controller
                 $reservation->amount = $amount;
                 $reservation->payment_status = false;
                 $reservation->save();
-                return redirect()->back()->with('message', '金額を確定しました');
+                return redirect()->back()->with('flash-message', '金額を確定しました');
         }
         $amount = $request->input('amount');
         $reservation->amount = $amount;
         $reservation->payment_status = false;
         $reservation->save();
-        return redirect()->back()->with('message', '金額を修正しました');
+        return redirect()->back()->with('flash-message', '金額を修正しました');
     }
 
     public function payment(Request $request)
@@ -46,11 +46,11 @@ class StripePaymentsController extends Controller
                     'amount' => $reservation->amount,
                     'currency' => 'jpy'
                 ));
-                return redirect()->back()->with('message', '支払いが成功しました');
+                return redirect()->back()->with('flash-message', '支払いが成功しました');
             } catch (\Exception $ex) {
                 return $ex->getMessage();
             }
         }
-        return redirect()->back()->with('message', '支払い済みです');
+        return redirect()->back()->with('flash-message', '支払い済みです');
     }
 }

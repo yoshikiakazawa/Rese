@@ -14,13 +14,11 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
-        // ソートのパラメータを取得
-        $sort = $request->input('sort', 'high');  // デフォルトは高い順
+        $sort = $request->input('sort', 'high');
 
-        // 並び替えのロジック
         if ($sort == 'high') {
             $shops = Shop::with('reviews')->get()->sortByDesc(function ($shop) {
-                return $shop->reviews->sum('rank'); // 高評価順
+                return $shop->reviews->sum('rank');
             });
         } elseif ($sort == 'low') {
             $shops = Shop::with('reviews')->get()->sortBy(function ($shop) {
@@ -28,9 +26,9 @@ class ShopController extends Controller
                 return $totalRank > 0 ? $totalRank : PHP_INT_MAX;
             });
         } elseif ($sort == 'random') {
-            $shops = Shop::inRandomOrder()->get();  // ランダム
+            $shops = Shop::inRandomOrder()->get();
         } else {
-            $shops = Shop::with('reviews')->get();  // デフォルトの並び
+            $shops = Shop::with('reviews')->get();
         }
 
         $areas = Area::all();
@@ -74,7 +72,7 @@ class ShopController extends Controller
             $favorites = Favorite::where('user_id', Auth::id())->pluck('shop_id')->toArray();
         }
         if ($shops->isEmpty()) {
-            return view('index', compact('shops', 'areas', 'genres', 'favorites'))->with('message', '検索結果がありません。');
+            return view('index', compact('shops', 'areas', 'genres', 'favorites'))->with('flash-message', '検索結果がありません。');
         }
         return view('index', compact('shops', 'areas', 'genres', 'favorites'));
 

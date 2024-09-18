@@ -8,9 +8,9 @@
 @component('components.nav')
 @endcomponent
 <div class="review-container">
-    <div class="flash_message">
-        @if(session('flash_message'))
-        {{ session('flash_message') }}
+    <div class="flash-message">
+        @if(session('flash-message'))
+        {{ session('flash-message') }}
         @endif
     </div>
     <div class="flex center wrap-768px">

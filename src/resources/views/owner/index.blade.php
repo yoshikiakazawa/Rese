@@ -13,12 +13,12 @@
     @if ($owner && $owner->name)
     <h2 class="shop-list__owner-name">owner name:{{ $owner->name }}さん</h2>
     @endif
-    <div class="flash_message">
+    <div class="flash-message">
         @if ($shops->isEmpty())
         <p>店舗が登録されていません。</p>
         @endif
-        @if (session('message'))
-        {{ session('message') }}
+        @if (session('flash-message'))
+        {{ session('flash-message') }}
         @endif
     </div>
 </div>

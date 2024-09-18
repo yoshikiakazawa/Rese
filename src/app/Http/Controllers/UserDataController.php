@@ -48,12 +48,12 @@ class UserDataController extends Controller
             $rank->rank = $request->rank;
             $rank->comment = $request->comment;
             $rank->save();
-            return redirect()->back()->with('message', '評価しました。');
+            return redirect()->back()->with('flash-message', '評価しました。');
         }
         $rank->rank = $request->rank;
         $rank->comment = $request->comment;
         $rank->save();
-        return redirect()->back()->with('message', '評価を修正しました。');
+        return redirect()->back()->with('flash-message', '評価を修正しました。');
     }
 
 }

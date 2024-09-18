@@ -54,11 +54,6 @@
     justify-content: space-between;
 }
 
-.sendMail__form--content-error-message {
-    font-size: 14px;
-    color: tomato;
-}
-
 .sendMail__form--content textarea {
     border: solid 2px black;
     font-size: 16px;

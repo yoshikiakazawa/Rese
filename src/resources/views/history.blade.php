@@ -22,9 +22,9 @@ use Carbon\Carbon;
             <p>来店済みの店舗はありません。</p>
         </div>
         @else
-        <div class="flash_message">
-            @if (session('message'))
-            {{ session('message') }}
+        <div class="flash-message">
+            @if (session('flash-message'))
+            {{ session('flash-message') }}
             @endif
         </div>
         <div class="history__detail--grid-parent">

@@ -20,7 +20,7 @@
             <div class="sendMail__form--content">
                 <div class="sendMail__form--content-flex">
                     <label for="message">本文</label>
-                    <div class="sendMail__form--content-error-message">
+                    <div class="error-message">
                         @error('message')
                         <p>{{ $message }}</p>
                         @enderror
@@ -33,8 +33,8 @@
                     <button class="sendMail__form--btn-submit" type="submit">送信</button>
                 </div>
                 <div class="sendMail__form--message">
-                    @if(session('message'))
-                    <p>{{ session('message') }}</p>
+                    @if(session('flash-message'))
+                    <p>{{ session('flash-message') }}</p>
                     @endif
                 </div>
             </div>

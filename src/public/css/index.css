@@ -219,13 +219,6 @@
     color: #FF0000;
 }
 
-.error__message {
-    font-size: 18px;
-    color: #FF0000;
-    text-align: right;
-    margin-right: 40px;
-}
-
 @media screen and (max-width: 768px) {
     .cards {
         margin-top: 140px;

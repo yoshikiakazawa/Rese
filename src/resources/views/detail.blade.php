@@ -16,9 +16,9 @@
     <p class="detail__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
     <p class="detail__overview">{{ $shop->overview }}</p>
     @if(Auth::check())
-    <div class="flash_message">
-        @if(session('flash_message'))
-        {{ session('flash_message') }}
+    <div class="flash-message">
+        @if(session('flash-message'))
+        {{ session('flash-message') }}
         @endif
     </div>
 

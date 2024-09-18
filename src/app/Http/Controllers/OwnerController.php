@@ -41,7 +41,7 @@ class OwnerController extends Controller
             'overview' => $request->overview,
             'image_path' => $path,
         ]);
-        return redirect()->back()->with('message', 'shopを作成しました。');
+        return redirect()->back()->with('flash-message', 'shopを作成しました。');
     }
 
     public function show($id) {
@@ -59,7 +59,7 @@ class OwnerController extends Controller
         $oldShop->genre_id = $request->genre_id;
         $oldShop->overview = $request->overview;
         $oldShop->save();
-        return redirect()->back()->with('message', 'shopを修正しました。');
+        return redirect()->back()->with('flash-message', 'shopを修正しました。');
     }
 
     public function history($id) {

@@ -37,16 +37,16 @@
             <div class="form__ttl">
                 <h2>Shop編集</h2>
             </div>
-            <div class="form__flash_message">
-                @if (session('message'))
-                {{ session('message') }}
+            <div class="flash-message">
+                @if (session('flash-message'))
+                {{ session('flash-message') }}
                 @endif
             </div>
             <div class="form-group">
                 <label for="shop_name">Shop Name</label>
                 <input type="text" name="shop_name" class="form-group__input" value="{{ $shop->shop_name }}">
             </div>
-            <div class="form-group__error-message">
+            <div class="error-message">
                 @error('shop_name')
                 <p>{{ $message }}</p>
                 @enderror
@@ -73,7 +73,7 @@
                 <label for="overview">Overview</label>
                 <textarea name="overview" rows="10" class="form-group__textarea">{{ $shop->overview }}</textarea>
             </div>
-            <div class="form-group__error-message">
+            <div class="error-message">
                 @error('overview')
                 <p>{{ $message }}</p>
                 @enderror

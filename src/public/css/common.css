@@ -38,7 +38,7 @@ input, textarea, select:focus {
     gap: 16px;
 }
 
-.flash_message {
+.flash-message {
     font-size: 18px;
     font-weight: 500;
     color: tomato;

@@ -81,10 +81,10 @@ use Carbon\Carbon;
                         <button class="historyDetail__card--btn" type="submit">確定</button>
                     </div>
                 </form>
-                @if (session('message'))
+                @if (session('flash-message'))
                 <script>
                     window.onload = function() {
-                    alert('{{ session('message') }}');
+                    alert('{{ session('flash-message') }}');
                 }
                 </script>
                 @endif

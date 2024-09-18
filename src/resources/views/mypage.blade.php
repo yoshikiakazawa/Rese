@@ -17,7 +17,7 @@ use Carbon\Carbon;
             <p>予約状況</p>
             <p class="reservation-status__ttl--link">訪問履歴は<a href="{{ route('history') }}">コチラ</a></p>
         </div>
-        <div class="flash_message">
+        <div class="flash-message">
             @if ($reservations->isEmpty())
             <p>予約済みの店舗はありません</p>
             @endif
@@ -96,10 +96,10 @@ use Carbon\Carbon;
                     @endif
                 </div>
             </div>
-            @if (session('message'))
+            @if (session('flash-message'))
             <script>
                 window.onload = function() {
-                    alert('{{ session('message') }}');
+                    alert('{{ session('flash-message') }}');
                 }
             </script>
             @endif
@@ -108,7 +108,7 @@ use Carbon\Carbon;
     </div>
     <div class="favorite-shop__detail">
         <div class="favorite-shop__ttl">お気に入り店舗</div>
-        <div class="flash_message">
+        <div class="flash-message">
             @if ($favoriteShops->isEmpty())
             <p>お気に入りに登録された店舗はありません</p>
             @endif

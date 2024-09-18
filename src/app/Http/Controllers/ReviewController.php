@@ -38,9 +38,9 @@ class ReviewController extends Controller
                 'rank' => $request->rank,
                 'image' => $path,
             ]);
-            return redirect()->back()->with('flash_message', '口コミを登録しました');
+            return redirect()->back()->with('flash-message', '口コミを登録しました');
         }
-        return redirect()->back()->with('flash_message', '口コミは既に登録されています');
+        return redirect()->back()->with('flash-message', '口コミは既に登録されています');
     }
 
     public function edit (ReviewRequest $request, $id) {
@@ -59,9 +59,9 @@ class ReviewController extends Controller
             $review->rank = $request->rank;
             $review->comment = $request->comment;
             $review->save();
-            return redirect()->back()->with('flash_message', '口コミを修正しました');
+            return redirect()->back()->with('flash-message', '口コミを修正しました');
         }
-        return redirect()->back()->with('flash_message', 'エラーが発生しました');
+        return redirect()->back()->with('flash-message', 'エラーが発生しました');
     }
 
     public function destroy($id)
@@ -69,8 +69,8 @@ class ReviewController extends Controller
         $review = Review::find($id);
         if (($review->user_id) === (Auth::id()) ) {
             $review->delete();
-            return redirect()->back()->with('flash_message', '口コミを削除しました');
+            return redirect()->back()->with('flash-message', '口コミを削除しました');
         }
-        return redirect()->back()->with('flash_message', '他人の口コミは削除できません');
+        return redirect()->back()->with('flash-message', '他人の口コミは削除できません');
     }
 }
