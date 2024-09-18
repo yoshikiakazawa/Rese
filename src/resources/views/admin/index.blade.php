@@ -8,15 +8,45 @@
 @if(Auth::check())
 @component('components.nav_admin')
 @endcomponent
-<div class="owner-list">
-    <div class="owner-list__heading">
-        <h2>OwnerList</h2>
-    </div>
+<div class="owner-list flex justify-center align-items-center">
+    <form class="owner-list__form" action="{{ route('storeOwner') }}" method="post">
+        @csrf
+        <h2 class="owner-list__form--ttl">Owner登録</h2>
+        <div class="flash-message">
+            @if (session('flash-message'))
+            {{ session('flash-message') }}
+            @endif
+        </div>
+        <div class="flex align-items-center owner-list__form--input-name">
+            <img src="{{ asset('/images/user.png') }}">
+            <input type="text" placeholder="name" name="name" value="{{ old('name') }}">
+        </div>
+        <div class="flex align-items-center  owner-list__form--input">
+            <img src="{{ asset('/images/user.png') }}">
+            <input type="text" placeholder="ID" name="login_owner_id" value="{{ old('login_owner_id') }}">
+        </div>
+        <div class="error-message">
+            @error('login_owner_id')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flex align-items-center  owner-list__form--input">
+            <img src="{{ asset('/images/password.png') }}">
+            <input type="password" placeholder="Password" name="password">
+        </div>
+        <div class="error-message">
+            @error('password')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <button class="owner-list__form__btn--submit" type="submit">登録</button>
+    </form>
     <div class="owner-list__table">
+        <h2 class="owner-list__ttl">OwnerList</h2>
         <table class="owner-list__table--inner">
             <tr class="owner-list__table--row">
                 <th class="owner-list__table--header">ID</th>
-                <th class="owner-list__table--header">お名前</th>
+                <th class="owner-list__table--header">お名前/会社名</th>
                 <th class="owner-list__table--header">List</th>
             </tr>
             @foreach ($owners as $owner)
@@ -30,52 +60,6 @@
             @endforeach
         </table>
     </div>
-
-    <form class="owner-list__form" action="{{ route('storeOwner') }}" method="post">
-        @csrf
-        <div class="owner-list__form--ttl">
-            <h2>新規登録</h2>
-            <div class="flash_message">
-                @if (session('message'))
-                {{ session('message') }}
-                @endif
-            </div>
-        </div>
-        <div class="owner-list__form--text-group">
-            <div class="owner-list__form--input">
-                <img src="{{ asset('/images/user.png') }}">
-                <input type="text" placeholder="name" name="name" value="{{ old('name') }}">
-            </div>
-            <div class="owner-list__form__message">
-                <p>空白ok</p>
-            </div>
-        </div>
-        <div class="owner-list__form--text-group">
-            <div class="owner-list__form--input">
-                <img src="{{ asset('/images/user.png') }}">
-                <input type="text" placeholder="ID" name="login_owner_id" value="{{ old('login_owner_id') }}">
-            </div>
-            <div class="owner-list__form__error-message">
-                @error('login_owner_id')
-                <p>{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-        <div class="owner-list__form--text-group">
-            <div class="owner-list__form--input">
-                <img src="{{ asset('/images/password.png') }}">
-                <input type="password" placeholder="Password" name="password">
-            </div>
-            <div class="owner-list__form__error-message">
-                @error('password')
-                <p>{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-        <div class="owner-list__form__btn">
-            <button class="owner-list__form__btn--submit" type="submit">登録</button>
-        </div>
-    </form>
 </div>
 @endif
 @endsection

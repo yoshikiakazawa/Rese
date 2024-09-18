@@ -1,23 +1,21 @@
 .owner-detail {
-    display: grid;
-    grid-template-rows: 80px 50px 1fr;
-}
-
-.owner-detail__ttl {
-    grid-row: 2/3;
     width: calc(100% - 10vw);
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 200px;
+}
+
+@media screen and (min-width: 1200px){
+    .owner-detail {
+        width: calc(100% - 40px);
+    }
+}
+
+/* owner一覧画面 */
+.owner-detail__ttl {
     margin-bottom: 16px;
 }
 
-.owner-detail__ttl--header {
-    display: flex;
-}
-
-.owner-detail__ttl--header-link {
+.owner-detail__ttl--back-link {
     padding: 4px;
     border-radius: 4px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
@@ -26,28 +24,17 @@
     margin-right: 8px;
 }
 
-.owner-detail__ttl--header-h2 {
+.owner-detail__ttl--header {
     font-size: 36px;
 }
 
-.owner-detail__ttl--table-inner {
-    width: 220px;
+.owner-detail__user-date-id {
+    margin-right: 1rem;
+    margin-left: 3rem;
+
 }
 
-.owner-detail__ttl--table-header {
-    font-size: 16px;
-    padding-bottom: 4px;
-}
-
-.owner-detail__ttl--table-content {
-    font-size: 16px;
-    padding-bottom: 10px;
-}
-
-.card {
-    grid-row: 4/5;
-    width: calc(100% - 10vw);
-    margin: 0 auto;
+.owner-detail__cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
@@ -61,11 +48,11 @@
     background-color: rgb(255, 255, 255);
 }
 
-.card-content__img img {
+.card-content__img {
     border-radius: 6px 6px 0 0;
     margin-bottom: 16px;
     width: 100%;
-    height: auto;
+    height: 60%;
 }
 
 .card-content__ttl,
@@ -80,30 +67,99 @@
     font-size: 12px;
 }
 
-@media screen and (max-width: 768px) {
-
-    .owner-detail__ttl,
-    .card {
-        width: calc(100% - 48px);
-    }
-
-    .owner-detail__ttl--header-link {
-        font-size: 20px;
-    }
-
-    .owner-detail__ttl--header-h2 {
-        font-size: 28px;
-    }
+.card-content__overview {
+    width: 85%;
+    margin: 0 auto;
+    height: 40px;
+    border: none;
+    outline: none;
 }
 
 @media screen and (max-width: 480px) {
-
-    .owner-detail__ttl,
-    .card {
-        width: calc(100% - 16px);
-
-        .owner-detail__ttl--header {
-            width: 230px;
-        }
+    .owner-detail__ttl--back-link {
+        font-size: 20px;
     }
+
+    .owner-detail__ttl--header {
+        font-size: 28px;
+    }
+
+    .owner-detail__user-date-id,
+    .owner-detail__user-date-name {
+        font-size: 12px;
+    }
+}
+/* shop登録フォーム */
+.create-shop-form {
+    position: fixed;
+    top: 80px;
+    left: calc(50% - 45vw);
+    z-index: 1;
+}
+
+@media screen and (min-width: 1200px){
+    .create-shop-form {
+        left: calc(50% - 580px);
+    }
+}
+
+.csv-form {
+    width: 300px;
+    height: 100px;
+    border: 1px solid rgb(215,215,215);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.csv-form__ttl {
+    width: 100%;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+.csv-form__drop-area {
+    width: 70%;
+    height: 72px;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid rgb(215,215,215);
+}
+
+.csv-form__drop-area-label {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 25%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.csv-form__input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.csv-form__btn {
+    padding: 1rem 0;
+    width: 20%;
+    height: 40px;
+    background-color: rgb(56,122,223);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.message-field {
+    height: 100px;
 }

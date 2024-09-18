@@ -12,6 +12,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StripePaymentsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CreateShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,13 +69,13 @@ Route::middleware('auth:admins')->group(function ()
     Route::get('/admin/detail/{owner_id}', [AdminController::class, 'detail'])->name('detailOwner');
     Route::get('/admin/send-notification', [NotificationController::class, 'showForm'])->name('admin.send-notification');
     Route::post('/admin/send-notification', [NotificationController::class, 'sendNotification']);
+    Route::post('/admin/csv-upload', [CreateShopController::class, 'upload'])->name('upload');
 });
 
 Route::prefix('owner')->group(function ()
 {
     Route::get('login', [AuthOwnerController::class, 'showLoginForm'])->name('showOwnerLogin');
     Route::post('login', [AuthOwnerController::class, 'login'])->name('ownerLogin');
-
 });
 
 Route::middleware('auth:owners')->group(function ()

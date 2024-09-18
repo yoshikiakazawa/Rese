@@ -1,63 +1,126 @@
 .owner-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 80px 50px 1fr;
-}
-
-.owner-list__heading {
-    grid-column: 1/2;
-    grid-row: 2/3;
     width: calc(100% - 10vw);
     margin: 0 auto;
-    font-size: 36px;
-    text-align: center;
+    margin-top: 80px;
+}
+@media screen and (min-width: 1200px){
+    .owner-list {
+        width: calc(100% - 40px);
+    }
 }
 
 @media screen and (max-width: 768px) {
     .owner-list {
-        grid-template-columns: minmax(280px, 1fr) minmax(200px, 1fr);
-        grid-template-rows: 70px 40px 1fr;
-    }
-
-    .owner-list__heading {
-        width: calc(100% - 48px);
-        font-size: 28px;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-    .owner-list {
-        grid-template-columns: minmax(250px, 1fr) minmax(180px, 1fr);
-        grid-template-rows: 60px 30px 1fr;
-    }
-
-    .owner-list__heading {
-        width: calc(100% - 16px);
-        font-size: 24px;
+        flex-direction: column;
     }
 }
 
-.owner-list__table {
-    grid-column: 1/2;
-    grid-row: 3/4;
-    width: calc(100% - 10vw);
+/* オーナー登録フォーム */
+.owner-list__form {
+    width: 240px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    background-color: #387ADF;
+    margin-right: 30px;
+}
+
+.owner-list__form--ttl {
+    font-size: 24px;
+    margin: .5em 0;
+    color: #fff;
+    text-align: center;
+}
+
+.owner-list__form--input-name,
+.owner-list__form--input {
+    height: 36px;
+    background-color: rgb(238, 238, 238);
+    width: 90%;
     margin: 0 auto;
+    border-radius: 4px;
+}
+
+.owner-list__form--input-name {
+    margin-bottom: 20px;
+}
+
+.owner-list__form--input-name img,
+.owner-list__form--input img,
+.owner-list__form--input input,
+.owner-list__form--input-name input {
+    margin: 0 4px;
+    padding-left: 8px;
+    background-color: rgb(238, 238, 238);
+}
+
+.owner-list__form--input-name img,
+.owner-list__form--input img {
+    height: 90%;
+    width: auto;
+}
+
+.owner-list__form--input-name input,
+.owner-list__form--input input {
+    font-size: 18px;
+    width: 80%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.owner-list__form__btn--submit {
+    width: 100%;
+    height: 36px;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    background-color: rgb(100,149,237);
+    color: #F2F2F2;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .owner-list__form {
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+}
+
+/* オーナー一覧 */
+.owner-list__table {
+    width: 430px;
 }
 
 .owner-list__table--inner {
-    margin: 0 auto;
-    width: 340px;
+    width: 100%;
+}
+
+.owner-list__ttl {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: .5rem 0;
+    border-radius: 30px;
+    background-color: #387ADF;
+    color: #fff;
 }
 
 .owner-list__table--header {
     font-size: 24px;
-    padding-bottom: .5em;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
 }
 
 .owner-list__table--content {
-    font-size: 20px;
-    padding-bottom: 1em;
+    font-size: 16px;
+    padding: .5rem 0;
+    border-bottom: 1px solid #000;
+}
+
+.owner-list__table--content:nth-child(2) {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .owner-list__table--button-link {
@@ -67,175 +130,30 @@
     cursor: pointer;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 440px) {
     .owner-list__table {
-        width: calc(100% - 48px);
+        width: 360px;
     }
 
-    .owner-list__table--inner {
-        width: 250px;
-    }
-
-    .owner-list__table--header {
-        font-size: 18px;
-    }
-
-    .owner-list__table--content {
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .owner-list__table {
-        width: calc(100% - 16px);
-    }
-
-    .owner-list__table--inner {
-        width: 240px;
+    .owner-list__ttl {
+        font-size: 28px;
     }
 
     .owner-list__table--header {
         font-size: 16px;
+        padding-bottom: .5rem;
     }
 
     .owner-list__table--content {
-        font-size: 14px;
-    }
-}
-
-.owner-list__form {
-    grid-column: 2/3;
-    grid-row: 3/4;
-    width: 230px;
-}
-
-.owner-list__form--ttl {
-    font-size: 24px;
-    margin-bottom: .5em;
-}
-
-.owner-list__form--text-group {
-    height: 60px;
-    margin-left: 16px;
-}
-
-.owner-list__form--input {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    height: 36px;
-    border-radius: 4px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-    background-color: rgb(238, 238, 238);
-}
-
-.owner-list__form--input img,
-.owner-list__form--input input {
-    margin: 0 4px;
-    padding-left: 8px;
-    background-color: rgb(238, 238, 238);
-}
-
-.owner-list__form--input img {
-    height: 90%;
-    width: auto;
-}
-
-.owner-list__form--input input {
-    font-size: 18px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    width: 90%;
-}
-
-.owner-list__form__error-message,
-.owner-list__form__message {
-    padding-left: 8px;
-    padding-top: 4px;
-    height: 24px;
-    font-size: 12px;
-}
-
-.owner-list__form__message {
-    color: gray;
-}
-
-.owner-list__form__error-message {
-    color: tomato;
-}
-
-.owner-list__form__btn--submit {
-    height: 36px;
-    padding: 0 12px;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-    background-color: #387ADF;
-    color: #F2F2F2;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 16px;
-}
-
-@media screen and (max-width: 768px) {
-    .owner-list__form {
-        width: 180px;
+        font-size: 12px;
+        padding: .5rem 0;
     }
 
-    .owner-list__form--ttl {
-        font-size: 20px;
-    }
-
-    .owner-list__form--text-group {
-        height: 56px;
-        margin-left: 10px;
-    }
-
-    .owner-list__form--input input {
-        font-size: 16px;
-    }
-
-    .owner-list__form__error-message,
-    .owner-list__form__message {
-        font-size: 10px;
-    }
-
-    .owner-list__form__btn--submit {
-        height: 28px;
-        padding: 0 10px;
-        font-size: 14px;
-        margin-left: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .owner-list__form {
-        width: calc(100% - 8px);
-        margin-right: auto;
-    }
-
-    .owner-list__form--ttl {
-        font-size: 18px;
-    }
-
-    .owner-list__form--text-group {
-        margin-left: 4px;
-    }
-
-    .owner-list__form--input input {
-        font-size: 14px;
-    }
-
-    .owner-list__form__error-message,
-    .owner-list__form__message {
-        margin-left: 4px;
-    }
-
-    .owner-list__form__btn--submit {
-        margin-left: 4px;
+    .owner-list__table--content:nth-child(2) {
+        padding-left: .75rem;
+        padding-right: .75rem;
     }
 }
