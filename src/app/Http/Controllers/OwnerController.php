@@ -9,7 +9,7 @@ use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
-use App\Http\Requests\StoreShopRequest;
+use App\Http\Requests\CreateShopRequest;
 use App\Http\Requests\EditShopRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +26,7 @@ class OwnerController extends Controller
         return view('owner.index', compact('owner', 'shops', 'areas', 'genres'));
     }
 
-    public function store(StoreShopRequest $request) {
+    public function store(CreateShopRequest $request) {
         $image = $request->file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $path = storage_path('app/public/shops/' . $filename);

@@ -7,7 +7,7 @@ use App\Models\Owner;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use App\Http\Requests\StoreOwnerRequest;
+use App\Http\Requests\CreateOwnerRequest;
 
 class AdminController extends Controller
 {
@@ -16,13 +16,14 @@ class AdminController extends Controller
         return view('admin.index', compact('owners'));
     }
 
-    public function store(StoreOwnerRequest $request) {
+    public function store(CreateOwnerRequest $request) {
         Owner::create([
+            'name' => $request->name,
             'login_owner_id' => $request->login_owner_id,
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(10),
         ]);
-        return redirect()->back()->with('message', 'ownerを作成しました。');
+        return redirect()->back()->with('flash-message', 'ownerを作成しました。');
     }
 
     public function detail($id)
