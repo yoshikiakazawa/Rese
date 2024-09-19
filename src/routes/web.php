@@ -82,10 +82,10 @@ Route::middleware('auth:owners')->group(function ()
 {
     Route::post('/owner/logout', [AuthOwnerController::class, 'logout'])->name('ownerLogout');
     Route::get('/owner', [OwnerController::class, 'index'])->name('owner');
-    Route::post('/owner/store', [OwnerController::class, 'store'])->name('storeShop');
+    Route::post('/owner/store', [CreateShopController::class, 'store'])->name('storeShop');
     Route::get('/owner/show/{id}', [OwnerController::class, 'show'])->name('showShop');
     Route::get('/owner/history/{id}', [OwnerController::class, 'history'])->name('reservationHistory');
     Route::get('/owner/past-history/{id}', [OwnerController::class, 'pastHistory'])->name('reservationPastHistory');
-    Route::post('/owner/edit', [OwnerController::class, 'edit'])->name('editShop');
+    Route::post('/owner/edit', [CreateShopController::class, 'edit'])->name('editShop');
     Route::post('/amount', [StripePaymentsController::class, 'amount'])->name('amount');
 });

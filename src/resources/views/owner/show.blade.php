@@ -9,78 +9,68 @@
 @component('components.nav_owner')
 @endcomponent
 <div class="shop-edit">
-    <div class="shop-edit__name">
+    <div class="shop__owner-name">
         @if ($owner && $owner->name)
-        <h2>{{ $owner->name }}さん</h2>
+        <h2>name:{{ $owner->name }}さん</h2>
         @endif
     </div>
-    <div class="container">
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content__img">
-                    <img src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300" height="200">
-                </div>
-                <div class="card-content__ttl">
-                    <h2>{{ $shop->shop_name }}</h2>
-                </div>
-                <div class="card-content__tag">
-                    <p>#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-                </div>
-                <div class="card-content__overview">
-                    <p>{{ $shop->overview }}</p>
-                </div>
+    <div class="flex justify-center wrap">
+        {{-- shop詳細 --}}
+        <div class="shop-card">
+            <img class="shop-card__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="400">
+            <h2 class="shop-card__shop-name">{{ $shop->shop_name }}</h2>
+            <p class="shop-card__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
+            <div class="flex justify-center">
+                <textarea class="shop-card__overview" readonly>{{ $shop->overview }}</textarea>
             </div>
         </div>
+        {{-- shop修正 --}}
         <form class="editShopForm" action="{{ route('editShop') }}" method="post">
             @csrf
             <input type="hidden" name="id" value="{{ $shop->id }}">
-            <div class="form__ttl">
-                <h2>Shop編集</h2>
-            </div>
+            <h2 class="editShopForm__ttl">Shop編集</h2>
             <div class="flash-message">
                 @if (session('flash-message'))
                 {{ session('flash-message') }}
                 @endif
             </div>
-            <div class="form-group">
-                <label for="shop_name">Shop Name</label>
-                <input type="text" name="shop_name" class="form-group__input" value="{{ $shop->shop_name }}">
+            <div class="flex align-items-center">
+                <label class="editShopForm__label" for="shop_name">Shop Name</label>
+                <input class="editShopForm__input" type="text" name="shop_name" value="{{ $shop->shop_name }}">
             </div>
             <div class="error-message">
                 @error('shop_name')
                 <p>{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="area_id">Area</label>
-                <select name="area_id" class="form-group__select">
+            <div class="editShopForm__area flex align-items-center">
+                <label class="editShopForm__label" for="area_id">Area</label>
+                <select class="editShopForm__select" name="area_id">
                     @foreach ($areas as $area)
                     <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->name
                         }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="genre_id">Genre</label>
-                <select name="genre_id" class="form-group__select">
+            <div class="editShopForm__genre flex align-items-center">
+                <label class="editShopForm__label" for="genre_id">Genre</label>
+                <select class="editShopForm__select" name="genre_id">
                     @foreach ($genres as $genre)
                     <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{
                         $genre->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group-overview">
-                <label for="overview">Overview</label>
-                <textarea name="overview" rows="10" class="form-group__textarea">{{ $shop->overview }}</textarea>
+            <label class="editShopForm__label-overview" for="overview">Overview</label>
+            <div class="flex justify-center">
+                <textarea class="editShopForm__textarea" name="overview">{{ $shop->overview }}</textarea>
             </div>
             <div class="error-message">
                 @error('overview')
                 <p>{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form__btn">
-                <button type="submit" class="form__btn--submit">登録</button>
-            </div>
+            <button class="editShopForm__btn--submit" type="submit">登録</button>
         </form>
     </div>
 </div>
