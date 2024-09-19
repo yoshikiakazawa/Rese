@@ -10,6 +10,12 @@
     }
 }
 
+@media screen and (max-width: 640px) {
+    .owner-detail {
+        margin-top: 230px;
+    }
+}
+
 /* owner一覧画面 */
 .owner-detail__ttl {
     margin-bottom: 16px;
@@ -162,4 +168,28 @@
 
 .message-field {
     height: 100px;
+}
+
+@media screen and (max-width: 640px) {
+    .create-shop-form {
+        flex-direction: column;
+    }
+
+    .csv-form {
+        height: 70px;
+    }
+
+    .csv-form__drop-area {
+        height: 46px;
+    }
+
+    .csv-form__drop-area-label {
+        top: 15%;
+        font-size: 12px;
+    }
+
+    .message-field {
+        height: 70px;
+    }
+
 }

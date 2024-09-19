@@ -24,7 +24,7 @@
                 height="200">
             <h2 class="card-content__ttl">{{ $shop->shop_name }}</h2>
             <p class="card-content__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-            <textarea class="card-content__overview"> {{ $shop->overview }}</textarea>
+            <textarea class="card-content__overview" readonly> {{ $shop->overview }}</textarea>
         </div>
         @endforeach
     </div>

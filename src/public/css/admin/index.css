@@ -135,7 +135,7 @@
 
 @media screen and (max-width: 440px) {
     .owner-list__table {
-        width: 360px;
+        width: 340px;
     }
 
     .owner-list__ttl {
@@ -155,5 +155,6 @@
     .owner-list__table--content:nth-child(2) {
         padding-left: .75rem;
         padding-right: .75rem;
+        width: 200px;
     }
 }

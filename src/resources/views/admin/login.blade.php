@@ -19,7 +19,7 @@
                     <img src="{{ asset('/images/mail.png') }}">
                     <input type="text" placeholder="Admin ID" name="login_admin_id" value="{{ old('login_admin_id') }}">
                 </div>
-                <div class="auth-form__content--error">
+                <div class="error-message">
                     @error('login_admin_id')
                     <p>{{ $message }}</p>
                     @enderror
@@ -30,7 +30,7 @@
                     <img src="{{ asset('/images/password.png') }}">
                     <input type="password" placeholder="Password" name="password">
                 </div>
-                <div class="auth-form__content--error">
+                <div class="error-message">
                     @error('password')
                     <p>{{ $message }}</p>
                     @enderror
