@@ -13,42 +13,43 @@
         {{ session('flash-message') }}
         @endif
     </div>
-    <div class="flex center wrap-768px">
+    <div class="review__grid">
         <div class="review-container__left">
-            <p class="review-container__message">今回のご利用はいかかでしたか？</p>
-            <div class="review-container__card">
-                <img class="review-container__card--image" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}"
-                    width="100%" height="150">
-                <p class="review-container__card--name">{{ $shop->shop_name }}</p>
-                <p class="review-container__card--tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-                <div class=" flex justify-between review-container__card--btn">
-
-                    <div class="modal">
-                        <label for="review-container__modal-toggle-{{$shop->id}}"
-                            class="review-container__modal-btn-open">詳しく見る</label>
-                        <input type="checkbox" id="review-container__modal-toggle-{{$shop->id}}"
-                            class="review-container__modal-toggle">
-                        <div class="review-container__modal">
-                            <div class="flex align-items-center justify-between">
-                                <span>概要</span>
-                                <label for="review-container__modal-toggle-{{$shop->id}}"
-                                    class="review-container__modal-btn-close"><i class="bi bi-x-circle"></i></label>
-                            </div>
-                            <p class="review-container__modal-txt">
+            <div class="review-container__left-box">
+                <p class="review-container__message">今回のご利用は<br>いかかでしたか？</p>
+                <div class="review-container__card">
+                    <img class="review-container__card--image" src="{{ $shop->image_path }}"
+                        alt="{{ $shop->shop_name }}" width="100%" height="150">
+                    <textarea class="review-container__card--name" rows="3" readonly>{{ $shop->shop_name }}</textarea>
+                    <p class="review-container__card--tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
+                    <div class=" flex justify-between review-container__card--btn">
+                        <div class="modal">
+                            <label for="review-container__modal-toggle-{{$shop->id}}"
+                                class="review-container__modal-btn-open">詳しく見る</label>
+                            <input type="checkbox" id="review-container__modal-toggle-{{$shop->id}}"
+                                class="review-container__modal-toggle">
+                            <div class="review-container__modal">
+                                <div class="flex align-items-center justify-between">
+                                    <span>概要</span>
+                                    <label for="review-container__modal-toggle-{{$shop->id}}"
+                                        class="review-container__modal-btn-close"><i class="bi bi-x-circle"></i></label>
+                                </div>
+                                <textarea class="review-container__modal-txt" readonly>
                                 {{ $shop->overview }}
-                            </p>
+                            </textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    @if($favorite->isEmpty())
-                    <div class="heart_false" data-shop-id="{{ $shop->id }}">
-                        <i class="bi bi-suit-heart-fill" id="heart"></i>
+                        @if($favorite->isEmpty())
+                        <div class="heart_false" data-shop-id="{{ $shop->id }}">
+                            <i class="bi bi-suit-heart-fill" id="heart"></i>
+                        </div>
+                        @else
+                        <div class="heart_true" data-shop-id="{{ $shop->id }}">
+                            <i class="bi bi-suit-heart-fill" id="heart"></i>
+                        </div>
+                        @endif
                     </div>
-                    @else
-                    <div class="heart_true" data-shop-id="{{ $shop->id }}">
-                        <i class="bi bi-suit-heart-fill" id="heart"></i>
-                    </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -81,7 +82,7 @@
                     <span class="review-container__text-comment">0/400(最高文字数)</span>
                 </div>
                 <div class="flex justify-between review-container__image-box">
-                    <label class="review-container__label" for="">画像の追加</label>
+                    <label class="review-container__label-image" for="">画像の追加</label>
                     <img class="image-preview" src="" alt="" width="100" id="imagePreview">
                 </div>
                 <div class="error-message">

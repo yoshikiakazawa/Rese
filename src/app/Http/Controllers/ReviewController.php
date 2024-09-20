@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Review;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewRequest;
 
@@ -38,9 +39,30 @@ class ReviewController extends Controller
                 'rank' => $request->rank,
                 'image' => $path,
             ]);
-            return redirect()->back()->with('flash-message', '口コミを登録しました');
+
+            $shop = Shop::find($id);
+            $myReview = Review::where('user_id', Auth::id())->where('shop_id', $id)->first();
+            $otherReviews = Review::where('user_id', '!=', Auth::id())->where('shop_id', $id)->get();
+            $times = Reservation::getTimes();
+            return redirect()->route('detail', ['shop_id' => $shop->id])->with([
+                'shop' => $shop,
+                'times' => $times,
+                'myReview' => $myReview,
+                'otherReviews' => $otherReviews,
+                'flash-message' => '口コミを登録しました'
+            ]);
         }
-        return redirect()->back()->with('flash-message', '口コミは既に登録されています');
+        $shop = Shop::find($id);
+        $myReview = Review::where('user_id', Auth::id())->where('shop_id', $id)->first();
+        $otherReviews = Review::where('user_id', '!=', Auth::id())->where('shop_id', $id)->get();
+        $times = Reservation::getTimes();
+        return redirect()->route('detail', ['shop_id' => $shop->id])->with([
+            'shop' => $shop,
+            'times' => $times,
+            'myReview' => $myReview,
+            'otherReviews' => $otherReviews,
+            'flash-message' => '口コミは既に登録されています'
+        ]);
     }
 
     public function edit (ReviewRequest $request, $id) {
@@ -64,9 +86,9 @@ class ReviewController extends Controller
         return redirect()->back()->with('flash-message', 'エラーが発生しました');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $review = Review::find($id);
+        $review = Review::find($request->id);
         if (($review->user_id) === (Auth::id()) ) {
             $review->delete();
             return redirect()->back()->with('flash-message', '口コミを削除しました');

@@ -60,7 +60,7 @@ input, textarea, select:focus {
     position: fixed;
     top: 24px;
     left: calc(50% - 45vw);
-    z-index: 999;
+    z-index: 40;
 }
 
 .nav__ttl {

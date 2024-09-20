@@ -12,28 +12,96 @@
     }
 }
 
+.detail__ttl {
+    width: 100%;
+}
+
 .detail__ttl--link {
     color: black;
-    padding: 4px;
     border-radius: 4px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 10px;
     font-size: 24px;
+    height: 24px;
+    padding: 4px;
+    background-color: #fff;
 }
 
-.detail__ttl--h2 {
-    font-size: 32px;
+.detail__ttl--shop-name {
+    flex: 1;
+    font-size: 24px;
+    border: none;
+    background-color: #eee;
 }
 
 .detail__img {
-    margin: 16px 0 32px;
+    margin: 16px 0;
 }
 
 .detail__tag {
-    margin-bottom: 32px;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.detail__overview {
+    width: 100%;
+    height: 6rem;
+    border: none;
+    background-color: #eee;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .detail {
+        top:80px;
+        width: 45%;
+    }
+
+    .detail__ttl {
+        width: calc(100vw - 10vw);
+    }
+
+    .detail__ttl--link {
+        font-size: 18px;
+        height: 18px;
+        padding: 4px;
+    }
+
+    .detail__ttl--shop-name {
+        font-size: 20px;
+    }
+
+    .detail__overview {
+        height: 11rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .detail {
+        top:60px;
+    }
+
+    .detail__img {
+        margin: 3rem 0;
+    }
+    .detail__tag {
+        margin-bottom: 1.5rem;
+    }
+
+    .detail__overview {
+        width: calc(100vw - 10vw);
+        margin-top: 1rem;
+        height: 5rem;
+    }
 }
 
 /* 口コミ画面用 */
+.review__link-btn {
+    display: block;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
 .review-detail__ttl {
     width: 100%;
     text-align: center;
@@ -42,19 +110,41 @@
     font-weight: 500;
     color: #fff;
     padding: 8px 0;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .review-detail__form {
-    padding: 1rem 0;
     border-top: 2px solid #CCC;
     border-bottom: 2px solid #CCC;
+    position: relative;
+}
+
+.review-detail__edit-btn,
+.review-detail__delete-btn {
+    color: #000;
+    border: none;
+    font-family: inherit;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+
+.review-detail__edit-btn {
+    position: absolute;
+    top: 1rem;
+    right: 100px;
+}
+
+.review-detail__delete-btn {
+    position: absolute;
+    top: 1rem;
+    right: 0;
 }
 
 .review-detail__image {
     width: 120px;
     height: 60px;
     position: relative;
+    margin-top: 1rem;
 }
 
 .review-detail__image label {
@@ -87,34 +177,6 @@
     z-index: 30;
 }
 
-.review-detail__btn-box {
-    width: 100%;
-    font-size: 14px;
-    text-align: right;
-    margin-bottom: 8px;
-}
-
-.review-detail__edit-btn {
-    display: inline;
-    margin-top: 8px;
-    color: #000;
-    margin-right: 1rem;
-    border: none;
-    font-family: inherit;
-    border-bottom: 1px solid #000;
-    cursor: pointer;
-}
-
-.review-detail__delete-btn {
-    display: inline;
-    margin-top: 8px;
-    color: #000;
-    text-decoration: none;
-    padding-bottom: 2px;
-    font-family: inherit;
-    border-bottom: 1px solid #000;
-}
-
 .review-detail__stars {
     margin: 4px 0;
 }
@@ -143,11 +205,30 @@
     border-bottom: 2px solid #CCC;
 }
 
+@media screen and (max-width: 768px) {
+    .review__ttl {
+        margin-top: 1.5rem;
+    }
+
+    .review__ttl,
+    .review-detail__form,
+    .review-detail__cards {
+        width: calc(100vw - 10vw);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .review-detail__edit-btn,
+    .review-detail__delete-btn {
+        font-size: 12px;
+    }
+}
+
 /* 予約フォーム */
 .reservation-form {
     height: 500px;
     background-color: rgb(48, 93, 255);
-    border-radius: 6px;
+    border-radius: 6px 6px 0;
     position: fixed;
     top: 2rem;
     right: calc(50% - 45vw);
@@ -230,10 +311,12 @@
     margin: 0 auto;
 }
 
+.reservation-data__table--inner-shop-name {
+    height: 40%;
+}
+
 .reservation-data__table--inner {
-    height: 25%;
-    display: flex;
-    align-items: center;
+    height: 20%;
 }
 
 .reservation-data__table--header,
@@ -260,57 +343,11 @@
     display: none;
 }
 
-.review__link-btn {
-    display: block;
-    margin: 1.5rem 0;
-    color: #000;
-}
-
 @media screen and (max-width: 768px) {
-    .detail {
-        top:80px
-    }
-
-    .detail__ttl--link {
-        font-size: 18px;
-    }
-
-    .detail__ttl--h2 {
-        font-size: 24px;
-    }
-
-    .detail__img {
-        margin: 16px 0;
-    }
-
-    .detail__tag {
-        margin-bottom: 24px;
-        font-size: 14px;
-    }
-
-    .detail__overview {
-        font-size: 14px;
-    }
-
-    .review-detail__btn-box,
-    .review-detail__edit-btn {
-        font-size: 12px;
-    }
-
-    .review-detail__ttl {
-        margin-top: 4rem;
-    }
-
-    .review__link-btn,
-    .review-detail__ttl,
-    .review-detail__form,
-    .review-detail__cards {
-        width:420px;
-        height: auto;
-    }
-
     .reservation-form {
-        height: 420px;
+        height: 400px;
+        position: absolute;
+        top: 146px;
     }
 
     .reservation-form__content {
@@ -373,11 +410,13 @@
 
 @media screen and (max-width: 480px) {
     .reservation-form {
-        height: 200px;
+        height: 190px;
+        position: absolute;
+        top: 112px;
     }
 
     .reservation-form__ttl {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 8px;
     }
 
@@ -404,18 +443,5 @@
 
     .reservation-form__select::after {
         left: 100px;
-    }
-
-    .detail__tag {
-        margin-bottom: 16px;
-    }
-
-    .detail__overview,
-    .review__link-btn,
-    .review-detail__ttl,
-    .review-detail__form,
-    .review-detail__cards {
-        width:340px;
-        height: auto;
     }
 }

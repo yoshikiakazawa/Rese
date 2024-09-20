@@ -112,9 +112,6 @@ use Carbon\Carbon;
             @if ($favoriteShops->isEmpty())
             <p>お気に入りに登録された店舗はありません</p>
             @endif
-            @if(session('message_favorite'))
-            {{ session('message_favorite') }}
-            @endif
         </div>
         <div class="flex align-items-center wrap">
             @foreach ($favoriteShops as $favoriteShop)
@@ -122,7 +119,7 @@ use Carbon\Carbon;
                 <img class="favorite-shop__card--img" src="{{ $favoriteShop->image_path }}"
                     alt="{{ $favoriteShop->shop_name }}">
                 <div class="favorite-shop__card--article">
-                    <h2 class="favorite-shop__card--ttl">{{ $favoriteShop->shop_name }}</h2>
+                    <textarea class="favorite-shop__card--shop-name" rows="2" readonly>{{ $favoriteShop->shop_name }}</textarea>
                     <div class="tag">
                         <p class="favorite-shop__card--tag">#{{ $favoriteShop->area->name }}
                             #{{$favoriteShop->genre->name }}</p>

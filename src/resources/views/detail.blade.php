@@ -8,13 +8,13 @@
 @component('components.nav')
 @endcomponent
 <div class="detail">
-    <div class="flex align-items-center">
-        <a class="detail__ttl--link" href="/"><i class="bi bi-chevron-left"></i></a>
-        <h2 class="detail__ttl--h2">{{ $shop->shop_name }}</h2>
+    <div class="detail__ttl flex">
+        <a class="detail__ttl--link" href="{{ route('index') }}"><i class="bi bi-chevron-left"></i></a>
+        <textarea class="detail__ttl--shop-name" rows="2" readonly>{{ $shop->shop_name }}</textarea>
     </div>
     <img class="detail__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="100%">
     <p class="detail__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-    <p class="detail__overview">{{ $shop->overview }}</p>
+    <textarea class="detail__overview" readonly>{{ $shop->overview }}</textarea>
     @if(Auth::check())
     <div class="flash-message">
         @if(session('flash-message'))
@@ -22,58 +22,68 @@
         @endif
     </div>
 
-    {{-- 自分のレビューが存在する場合の編集フォーム --}}
-    @if (empty($myReview))
-    <a class="review__link-btn" href="{{ route('showReview', $shop->id) }}">口コミを投稿する</a>
-    @endif
-    @if (!empty($myReview) || !empty($otherReviews))
-    <h3 class="review-detail__ttl">全ての口コミ情報</h3>
-    @endif
+    {{-- レビューフォーム --}}
+    <div class="review__ttl">
+        @if (empty($myReview) && empty($otherReviews[0]))
+        <a class="review__link-btn" href="{{ route('showReview', $shop->id) }}">口コミを投稿する</a>
+        <p>レビューがありません。</p>
+        @elseif (empty($myReview) && !empty($otherReviews[0]))
+        <a class="review__link-btn" href="{{ route('showReview', $shop->id) }}">口コミを投稿する</a>
+        <h3 class="review-detail__ttl">全ての口コミ情報</h3>
+        @elseif (!empty($myReview) && !empty($otherReviews[0]))
+        <h3 class="review-detail__ttl">全ての口コミ情報</h3>
+        @endif
+    </div>
+    {{-- 自分のレビュー --}}
     @if (!empty($myReview))
-    <form class="review-detail__form" action="{{ route('editReview', $myReview->id) }}" method="post"
-        enctype="multipart/form-data">
-        @csrf
-        <div class="review-detail__btn-box">
+    <div class="review-detail__form">
+        <form class="review-detail__form-edit" action="{{ route('editReview', $myReview->id) }}" method="post"
+            enctype="multipart/form-data">
+            @csrf
             <button class="review-detail__edit-btn" type="submit">口コミを編集</button>
-            <a class="review-detail__delete-btn" href="{{ route('deleteReview', $myReview->id) }}">口コミを削除</a>
-        </div>
-        <div class="review-detail__image">
-            <label>写真を追加</label>
-            @if (!empty($myReview->image))
-            <img src="{{ $myReview->image }}" alt="{{ $myReview->shop->name }}" width="120" height="60"
-                id="imagePreview">
-            @endif
-            <input type="file" name="image" id="image" onchange="previewImage(event)">
-        </div>
-        <div class="error-message">
+            <div class="review-detail__image">
+                <label>写真を追加</label>
+                @if (!empty($myReview->image))
+                <img src="{{ $myReview->image }}" alt="{{ $myReview->shop->name }}" width="120" height="60"
+                    id="imagePreview">
+                @endif
+                <input type="file" name="image" id="image" onchange="previewImage(event)">
+            </div>
             @error('image')
-            {{$message}}
+            <div class="error-message">
+                {{$message}}
+            </div>
             @enderror
-        </div>
-        <div class="review-detail__stars" data-rating="{{ $myReview->rank ?? 0 }}">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-        </div>
-        <input type="hidden" name="rank" id="rank" value="{{ $myReview->rank ?? 0 }}">
-        <div class="error-message">
+            <div class="review-detail__stars" data-rating="{{ $myReview->rank ?? 0 }}">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" name="rank" id="rank" value="{{ $myReview->rank ?? 0 }}">
             @error('rank')
-            {{$message}}
+            <div class="error-message">
+                {{$message}}
+            </div>
             @enderror
-        </div>
-        <textarea class="review-detail__comment" name="comment">{{ $myReview->comment }}</textarea>
-        <div class="error-message">
+            <textarea class="review-detail__comment" name="comment">{{ $myReview->comment }}</textarea>
             @error('comment')
-            {{$message}}
+            <div class="error-message">
+                {{$message}}
+            </div>
             @enderror
-        </div>
-    </form>
+        </form>
+        <form class="review-detail__form-delete" action="{{ route('deleteReview') }}" method="post">
+            @csrf
+            <input type="hidden" name="id" value="{{ $myReview->id }}">
+            <button class="review-detail__delete-btn" type="submit">口コミを削除</button>
+        </form>
+    </div>
     @endif
 
-    {{-- 他のユーザーのレビューを表示 --}}
-    @if (!empty($otherReviews))
+    {{-- 他のユーザーのレビュー --}}
+    @if (!empty($otherReviews[0]))
     @foreach ($otherReviews as $otherReview)
     <div class="review-detail__cards">
         @if (!empty($otherReview->image))
@@ -83,7 +93,7 @@
             @for ($i = 1; $i <= 5; $i++) <span class="{{ $i <= $otherReview->rank ? 'star-blue' : 'star' }}">★</span>
                 @endfor
         </div>
-        <textarea class="review-detail__comment" name="comment">{{ $otherReview->comment }}</textarea>
+        <textarea class="review-detail__comment" name="comment" readonly>{{ $otherReview->comment }}</textarea>
     </div>
     @endforeach
     @endif
@@ -132,25 +142,25 @@
         </div>
         <div class="reservation-data">
             <table class="reservation-data__table">
-                <tr class="reservation-data__table--inner">
+                <tr class="reservation-data__table--inner-shop-name flex align-items-center">
                     <th class="reservation-data__table--header">Shop</th>
                     <td class="reservation-data__table--text">
                         <p class="reservation-data__table--text-shop">{{ $shop->shop_name }}</p>
                     </td>
                 </tr>
-                <tr class="reservation-data__table--inner">
+                <tr class="reservation-data__table--inner flex align-items-center">
                     <th class="reservation-data__table--header">Date</th>
                     <td class="reservation-data__table--text">
                         <p class="reservation-data__table--text-date"></p>
                     </td>
                 </tr>
-                <tr class="reservation-data__table--inner">
+                <tr class="reservation-data__table--inner flex align-items-center">
                     <th class="reservation-data__table--header">Time</th>
                     <td class="reservation-data__table--text">
                         <p class="reservation-data__table--text-time"></p>
                     </td>
                 </tr>
-                <tr class="reservation-data__table--inner">
+                <tr class="reservation-data__table--inner flex align-items-center">
                     <th class="reservation-data__table--header">Number</th>
                     <td class="reservation-data__table--text">
                         <p class="reservation-data__table--text-number"></p>

@@ -1,16 +1,15 @@
 .mypage__login-name {
     font-size: 32px;
     font-weight: bold;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 24px;
-    margin-right: 5vw;
+    margin-top: 28px;
+    margin-left: 200px;
 }
 
 .container {
     width: calc(100% - 10vw);
     margin: 0 auto;
     margin-top: 40px;
+    margin-bottom: 100px;
 }
 
 @media screen and (min-width: 1200px){
@@ -166,21 +165,25 @@
 
 .favorite-shop__card--article {
     padding: 4px;
+    background-color: #fff;
 }
 
 .favorite-shop__card--article {
-    width: calc(100% - 10px);
+    width: calc(100% - 5%);
     margin: 0 auto;
 }
 
-.favorite-shop__card--ttl {
-    font-size: 20px;
-    margin: .5rem 0;
+.favorite-shop__card--shop-name {
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 8px;
+    border: none;
 }
 
 .favorite-shop__card--tag {
     font-size: 12px;
-    margin-bottom: .5rem;
+    width: 100%;
+    margin-bottom: 8px;
 }
 
 .favorite-shop__detail-btn {
@@ -213,15 +216,17 @@
     }
 
     .reservation-status {
-        min-width: 160px;
+        min-width: 150px;
+        margin-right: 20px;
     }
 
     .reservation-status__ttl {
         font-size: 14px;
+        flex-direction: column;
+        margin-bottom: 1rem;
     }
 
     .reservation-status__ttl--link {
-        margin-left: 4px;
         font-size: 12px;
     }
 

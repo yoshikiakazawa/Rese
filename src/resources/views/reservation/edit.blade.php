@@ -12,11 +12,11 @@
 <div class="detail">
     <div class="flex align-items-center">
         <a class="detail__ttl--link" href="{{ route('mypage') }}"><i class="bi bi-chevron-left"></i></a>
-        <h2 class="detail__ttl--h2">{{ $shop->shop_name }}</h2>
+        <textarea class="detail__ttl--shop-name" rows="2" readonly>{{ $shop->shop_name }}</textarea>
     </div>
     <img class="detail__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="100%">
     <p class="detail__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-    <p class="detail__overview">{{ $shop->overview }}</p>
+    <textarea class="detail__overview" readonly>{{ $shop->overview }}</textarea>
 </div>
 <form class="reservation-form" action="{{ route('updateReservation') }}" method="post">
     @method('PATCH')
@@ -27,7 +27,7 @@
         <div class="reservation-form__input">
             <input type="date" name="date" id="date" value="{{$reservation->date}}">
             @error('date')
-            <div class="reservation-form__error">
+            <div class="error-message">
                 {{$message}}
             </div>
             @enderror
@@ -41,7 +41,7 @@
                 @endforeach
             </select>
             @error('time')
-            <div class="reservation-form__error">
+            <div class="error-message">
                 {{$message}}
             </div>
             @enderror
@@ -55,7 +55,7 @@
                     @endfor
             </select>
             @error('number')
-            <div class="reservation-form__error">
+            <div class="error-message">
                 {{$message}}
             </div>
             @enderror

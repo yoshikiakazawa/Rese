@@ -10,6 +10,7 @@
 <div class="content">
     {{-- 検索、並び替えフォーム --}}
     <div class="flex search-box">
+        @if( Auth::check() )
         <form class="sort__form" id="sortForm" action="{{ route('index') }}" method="GET">
             <select name="sort" id="sortSelect">
                 <option value="" disabled selected class="hidden">並び替え:評価高/低</option>
@@ -18,6 +19,7 @@
                 <option value="random" {{ request('sort')=='random' ? 'selected' : '' }}>ランダム</option>
             </select>
         </form>
+        @endif
         <form class="search__form" action="/search" method="get">
             <select class="search__form--select-area" name="area_id" id="area_id">
                 <option value="" {{ request('area_id')=='' ? 'selected' : '' }}>All area</option>
@@ -50,16 +52,12 @@
         <div class="cards__grid-parent">
             @foreach ($shops as $shop)
             <div class="practice__card">
-                <img class="card__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300"
-                    height="200">
+                <img class="card__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="400">
                 <div class="card__article">
-                    <div class="card__ttl">
-                        <h2>{{ $shop->shop_name }}</h2>
-                    </div>
-                    <div class="tag">
-                        <p class="card__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
-                    </div>
-                    <div class="flex justify-between card__button">
+                    <textarea class="card__ttl flex align-items-center" rows="2"
+                        readonly>{{ $shop->shop_name }}</textarea>
+                    <p class="card__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
+                    <div class="flex justify-between align-items-center">
                         <a class="card__button--link" href="{{ route('detail', $shop->id) }}">詳しくみる</a>
                         @if( Auth::check() )
                         @php

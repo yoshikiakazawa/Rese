@@ -145,9 +145,25 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 425px) {
+    .search__form--select-area{
+        width: 70px;
+    }
+
+    .search__form--select-genre {
+        width: 80px;
+    }
+
     .search__form--input {
         width: 100px;
+    }
+
+    .search__form--button,
+    .search__form--select-area,
+    .search__form--select-genre,
+    .search__form--input,
+    .sort__form select {
+        font-size: 12px;
     }
 }
 
@@ -159,8 +175,8 @@
 
 .cards__grid-parent {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 8px;
 }
 
 .practice__card {
@@ -172,27 +188,27 @@
 
 .card__img {
     width: 100%;
-    height: auto;
+    height: 55%;
+    object-fit: cover;
     border-radius: 6px 6px 0 0;
 }
 
 .card__article {
-    width: calc(100% - 8%);
-    margin: auto;
+    height: 45%;
 }
 
 .card__ttl {
-    margin-top: 20px;
-    font-size: 18px;
+    width: 90%;
+    font-size: 16px;
+    margin-left: 5%;
+    margin-bottom: 8px;
+    border: none;
 }
 
 .card__tag {
-    padding: 14px 0;
-    font-size: 14px;
-}
-
-.card__button {
-    margin-bottom: 20px;
+    font-size: 12px;
+    margin-left: 5%;
+    margin-bottom: 8px;
 }
 
 .card__button--link {
@@ -204,11 +220,13 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
     text-decoration: none;
     font-size: 16px;
+    margin-left: 5%;
 }
 
-#heart {
+.heart {
     font-size: 28px;
     cursor: pointer;
+    margin-right: 5%;
 }
 
 .heart_false i {
@@ -223,51 +241,18 @@
     .cards {
         margin-top: 140px;
     }
-
-    .cards__grid-parent {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 8px;
-    }
-
-    .card__ttl {
-        margin-top: 16px;
-        font-size: 16px;
-    }
-
-    .card__tag {
-        padding: 12px 0;
-        font-size: 12px;
-    }
-
-    .card__button {
-        margin-bottom: 16px;
-    }
-
-    .card__button--link {
-        padding: 4px;
-        font-size: 14px;
-    }
-
-    #heart {
-        font-size: 24px;
-    }
-
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
     .cards__grid-parent {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
-    .card__ttl {
-        margin-top: 12px;
+    .card__img {
+        height: 50%;
     }
 
-    .card__tag {
-        padding: 8px 0;
-    }
-
-    .card__button {
-        margin-bottom: 12px;
+    .card__article {
+        height: 50%;
     }
 }

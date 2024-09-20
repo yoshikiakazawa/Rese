@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/review/{shop_id}', [ReviewController::class, 'show'])->name('showReview');
     Route::post('/review/{shop_id}/store', [ReviewController::class, 'store'])->name('storeReview');
     Route::post('/review/{id}/edit', [ReviewController::class, 'edit'])->name('editReview');
-    Route::get('/review/{id}/delete', [ReviewController::class, 'destroy'])->name('deleteReview');
+    Route::post('/review/destroy', [ReviewController::class, 'destroy'])->name('deleteReview');
 });
 
 Route::prefix('admin')->group(function ()

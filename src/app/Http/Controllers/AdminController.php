@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     public function detail($id)
     {
-        $owner = Owner::findOrFail($id);
+        $owner = Owner::find($id);
         $shops = Shop::where('owner_id', $id)->with(['area', 'genre'])->get();
 
         return view('admin.detail', compact('shops', 'owner'));
