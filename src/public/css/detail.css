@@ -77,20 +77,12 @@
 }
 
 @media screen and (max-width: 480px) {
-    .detail {
-        top:60px;
-    }
-
     .detail__img {
-        margin: 3rem 0;
-    }
-    .detail__tag {
-        margin-bottom: 1.5rem;
+        margin: 2.5rem 0;
     }
 
     .detail__overview {
         width: calc(100vw - 10vw);
-        margin-top: 1rem;
         height: 5rem;
     }
 }
@@ -179,18 +171,20 @@
 
 .review-detail__stars {
     margin: 4px 0;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 .star {
-    font-size: 28px;
     color:rgb(215,215,215);
-    cursor: pointer;
 }
 
 .star-blue {
     color:#387ADF;
-    font-size: 28px;
-    cursor: pointer;
+}
+
+.pointer-none {
+    pointer-events: none;
 }
 
 .review-detail__comment {

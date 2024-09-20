@@ -74,6 +74,11 @@
     font-size: 16px;
 }
 
+.auth-form__content--btn-submit:hover {
+    background-color: #2A5CAA;
+}
+
+
 @media screen and (max-width: 768px) {
 
     .auth {

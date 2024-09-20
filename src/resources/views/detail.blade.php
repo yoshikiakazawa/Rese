@@ -74,7 +74,8 @@
             </div>
             @enderror
         </form>
-        <form class="review-detail__form-delete" action="{{ route('deleteReview') }}" method="post">
+        <form onsubmit="return confirm('本当に削除しますか？')" class="review-detail__form-delete"
+            action="{{ route('deleteReview') }}" method="post">
             @csrf
             <input type="hidden" name="id" value="{{ $myReview->id }}">
             <button class="review-detail__delete-btn" type="submit">口コミを削除</button>
@@ -89,7 +90,7 @@
         @if (!empty($otherReview->image))
         <img src="{{ $otherReview->image }}" alt="{{ $otherReview->shop->name }}" width="120" height="60">
         @endif
-        <div class="review-detail__stars">
+        <div class="review-detail__stars pointer-none">
             @for ($i = 1; $i <= 5; $i++) <span class="{{ $i <= $otherReview->rank ? 'star-blue' : 'star' }}">★</span>
                 @endfor
         </div>

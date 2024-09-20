@@ -93,6 +93,7 @@
     margin: auto;
     box-shadow: 0 0 0 9999px rgba(0, 0, 0, .8);
     border-radius: 6px;
+    z-index: 50;
 }
 
 .statusModal__toggle:checked+.statusModal {

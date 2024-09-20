@@ -77,6 +77,11 @@ input, textarea, select:focus {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
 }
 
+#open:hover,
+#close:hover {
+    background-color: #2A5CAA;
+}
+
 #close {
     display: inline;
     position: absolute;
@@ -151,6 +156,16 @@ input, textarea, select:focus {
     font-size: 32px;
     cursor: pointer;
 }
+
+.modal__nav--item a:hover,
+.modal__nav--button:hover {
+    background-color: #387ADF;
+    color: #fff;
+    border-radius: 4px;
+    padding: 4px;
+
+}
+
 
 @media screen and (max-width: 768px) {
     .nav__ttl {

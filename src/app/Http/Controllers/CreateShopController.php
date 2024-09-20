@@ -74,11 +74,11 @@ class CreateShopController extends Controller
             }
             $data[] = [
                 'owner_id' => $request->owner_id,
-                'shop_name' => mb_convert_encoding($row[0], 'UTF-8', $encoding),
-                'area_id' => $valid_areas[mb_convert_encoding($row[1], 'UTF-8', $encoding)],
-                'genre_id' => $valid_genres[mb_convert_encoding($row[2], 'UTF-8', $encoding)],
-                'overview' => mb_convert_encoding($row[3], 'UTF-8', $encoding),
-                'image_path' => mb_convert_encoding($row[4], 'UTF-8', $encoding),
+                'shop_name' => mb_convert_encoding($row[0], 'UTF-8'),
+                'area_id' => $valid_areas[mb_convert_encoding($row[1], 'UTF-8')],
+                'genre_id' => $valid_genres[mb_convert_encoding($row[2], 'UTF-8')],
+                'overview' => mb_convert_encoding($row[3], 'UTF-8'),
+                'image_path' => mb_convert_encoding($row[4], 'UTF-8'),
             ];
             $row_count++;
         }
