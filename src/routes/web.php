@@ -70,6 +70,8 @@ Route::middleware('auth:admins')->group(function ()
     Route::get('/admin/send-notification', [NotificationController::class, 'showForm'])->name('admin.send-notification');
     Route::post('/admin/send-notification', [NotificationController::class, 'sendNotification']);
     Route::post('/admin/csv-upload', [CreateShopController::class, 'upload'])->name('upload');
+    Route::get('/admin/review/{shop_id}', [AdminController::class, 'review'])->name('adminReview');
+    Route::post('/admin/review/delete', [AdminController::class, 'reviewDestroy'])->name('adminReviewDestroy');
 });
 
 Route::prefix('owner')->group(function ()

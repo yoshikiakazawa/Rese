@@ -22,8 +22,11 @@
         <div class="card-content">
             <img class="card-content__img" src="{{ $shop->image_path }}" alt="{{ $shop->shop_name }}" width="300"
                 height="200">
-            <h2 class="card-content__ttl">{{ $shop->shop_name }}</h2>
-            <p class="card-content__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</p>
+            <textarea class="card-content__ttl" rows="2" readonly>{{ $shop->shop_name }}</textarea>
+            <div class="flex justify-between align-items-center">
+                <span class="card-content__tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</span>
+                <a class="card-content__review-link" href="{{ route('adminReview',$shop->id) }}">口コミ確認</a>
+            </div>
             <textarea class="card-content__overview" readonly> {{ $shop->overview }}</textarea>
         </div>
         @endforeach

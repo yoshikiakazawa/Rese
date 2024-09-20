@@ -1,0 +1,93 @@
+.review-detail{
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.review-ttl {
+    width: 100%;
+}
+
+.review-ttl__link {
+    color: black;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    margin-right: 10px;
+    font-size: 24px;
+    height: 24px;
+    padding: 4px;
+    background-color: #fff;
+}
+
+.review-ttl__shop-name {
+    flex: 1;
+    font-size: 24px;
+    border: none;
+    background-color: #eee;
+}
+
+.review-detail__ttl {
+    width: 100%;
+    text-align: center;
+    background-color: #387ADF;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    padding: 8px 0;
+}
+
+.review-detail__cards {
+    border-bottom: 2px solid #CCC;
+}
+
+.review-detail__image {
+    width: 120px;
+    height: 60px;
+    position: relative;
+}
+
+.review-detail__stars {
+    margin: 4px 0;
+    font-size: 24px;
+}
+
+.star {
+    color:rgb(215,215,215);
+}
+
+.star-blue {
+    color:#387ADF;
+}
+
+.review-detail__delete-btn {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #387ADF;
+    color: #fff;
+    padding: 4px 8px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.review-detail__delete-btn:hover {
+    background-color: #2A5CAA;
+}
+
+.review-detail__comment {
+    width: 100%;
+    height: 60px;
+    border: none;
+    background: none;
+}
+
+@media screen and (max-width: 480px) {
+    .review-detail{
+        width: 330px;
+        margin-top: 60px;
+    }
+
+    .review-detail__comment {
+        height: 100px;
+    }
+}
