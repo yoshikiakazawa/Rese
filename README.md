@@ -72,6 +72,12 @@ Owner ID:admin001 　 Password:admin001
 - image_path:jpeg、png のみアップロード可能
   ![alt text](image-7.png)
 
+![alt text](image-8.png)
+
+shop は owner とリレーションしているので各 owner の一覧ボタンより csv 取込フォームへ進んでください
+
+- owner の各 shop ページより口コミ確認、削除
+
 **一般ユーザーへお知らせメール作成ページ**
 
 ## 環境構築
