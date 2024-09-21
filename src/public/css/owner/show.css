@@ -137,3 +137,9 @@ font-size: 16px;
     cursor: pointer;
     font-size: 16px;
 }
+
+.editShopForm__btn--submit:hover {
+    background-color: #fff;
+    color: #387ADF;
+    border: 2px solid #387ADF;
+}

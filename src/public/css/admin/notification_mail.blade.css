@@ -75,6 +75,11 @@
     font-size: 16px;
 }
 
+.sendMail__form--btn-submit:hover {
+    background-color: #fff;
+    color: #387ADF;
+}
+
 .sendMail__form--message {
     font-size: 14px;
 }

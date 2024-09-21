@@ -77,6 +77,12 @@
     cursor: pointer;
 }
 
+.review-container__modal-btn-open:hover {
+    background-color: #fff;
+    color: #387ADF;
+    font-weight: 600;
+}
+
 .review-container__modal {
     display: none;
     width: 50%;
@@ -122,6 +128,10 @@
 #heart {
     font-size: 26px;
     cursor: pointer;
+}
+
+#heart:hover {
+    font-size: 28px;
 }
 
 .heart_true {
@@ -246,6 +256,11 @@
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
+}
+
+.review-container__form-btn:hover {
+    background-color: #387ADF;
+    color: #fff;
 }
 
 @media screen and (max-width: 768px) {

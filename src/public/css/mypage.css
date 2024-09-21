@@ -42,6 +42,11 @@
     color: #387ADF;
 }
 
+.reservation-status__ttl--link a:hover {
+    background-color: #387ADF;
+    color: #fff;
+}
+
 .reservation-status__detail {
     background-color: #387ADF;
     color: rgb(255, 255, 255);
@@ -62,6 +67,11 @@
     background-color: #387ADF;
     color: #F2F2F2;
     font-size: 20px;
+}
+
+.reservation-status__detail--header-update-button:hover,
+.reservation-status__detail--header-delete-button-submit:hover {
+    font-size: 22px;
 }
 
 .reservation-status__table {
@@ -110,6 +120,13 @@
     padding: 0.5em 0;
     border-radius: 4px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.statusModal__button--open:hover,
+.favorite-shop__detail-btn:hover {
+    background-color: #fff;
+    color: #387ADF;
+    font-weight: 600;
 }
 
 .statusModal__toggle {
@@ -201,6 +218,10 @@
 #heart {
     font-size: 20px;
     cursor: pointer;
+}
+
+#heart:hover {
+    font-size: 22px;
 }
 
 .heart_false i {

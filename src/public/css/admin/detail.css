@@ -88,7 +88,12 @@
     font-size: 12px;
     cursor: pointer;
     margin-right: 5%;
+}
 
+.owner-detail__ttl--back-link:hover,
+.card-content__review-link:hover {
+    background-color: rgb(56,122,223);
+    color: #fff;
 }
 
 .card-content__tag,
@@ -175,6 +180,7 @@
 }
 
 .csv-form__btn {
+    display: block;
     padding: 1rem 0;
     width: 20%;
     height: 40px;
@@ -185,6 +191,12 @@
     font-size: 14px;
     cursor: pointer;
     margin-left: 4px;
+    box-shadow: 0 4px 0 #3155A6;
+}
+
+.csv-form__btn:hover {
+    transform: translateY(4px);
+    box-shadow: none;
 }
 
 .message-field {

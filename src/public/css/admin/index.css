@@ -79,6 +79,11 @@
     font-size: 16px;
 }
 
+.owner-list__form__btn--submit:hover {
+    background-color: #fff;
+    color: #387ADF;
+}
+
 @media screen and (max-width: 768px) {
     .owner-list__form {
         margin-bottom: 2rem;
@@ -131,6 +136,11 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
     text-decoration: none;
     font-size: 14px;
+}
+
+.owner-list__table--button-link:hover {
+    background-color: #387ADF;
+    color: #fff;
 }
 
 @media screen and (max-width: 440px) {

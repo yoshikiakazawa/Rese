@@ -27,6 +27,11 @@
     background-color: #fff;
 }
 
+.detail__ttl--link:hover {
+    background-color: #387ADF;
+    color: #fff;
+}
+
 .detail__ttl--shop-name {
     flex: 1;
     font-size: 24px;
@@ -89,7 +94,7 @@
 
 /* 口コミ画面用 */
 .review__link-btn {
-    display: block;
+    display: inline-block;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -118,6 +123,13 @@
     font-family: inherit;
     border-bottom: 1px solid #000;
     cursor: pointer;
+}
+
+.review__link-btn:hover,
+.review-detail__edit-btn:hover,
+.review-detail__delete-btn:hover {
+    background-color: #387ADF;
+    color: #fff;
 }
 
 .review-detail__edit-btn {
@@ -201,7 +213,7 @@
 
 @media screen and (max-width: 768px) {
     .review__ttl {
-        margin-top: 1.5rem;
+        margin-top: 2rem;
     }
 
     .review__ttl,
@@ -265,6 +277,11 @@
     font-family: 'Franklin Gothic Medium';
 }
 
+.reservation-form__input input:hover,
+.reservation-form__select select:hover {
+    background-color: #DDD;
+}
+
 .reservation-form__input input {
     width: 200px;
     font-weight: 600;
@@ -323,14 +340,43 @@
 }
 
 .reservation-form__submit-btn {
-    width: 100%;
-    border: none;
-    padding: 16px 0;
     font-size: 16px;
-    background-color: rgb(5, 56, 255);
-    color: rgb(255, 255, 255);
     border-radius: 0 0 6px 6px;
+    display: block;
+    font-weight: bold;
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
     cursor: pointer;
+    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    background: rgb(5, 56, 255);
+    border: 2px solid rgb(5, 56, 255);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.reservation-form__submit-btn::after {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    z-index: -1;
+}
+
+.reservation-form__submit-btn:hover {
+    color: rgb(5, 56, 255);
+}
+
+.reservation-form__submit-btn:hover::after {
+    transform: scale(1, 1);
 }
 
 .reservation__link-btn {

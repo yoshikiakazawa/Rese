@@ -223,6 +223,10 @@
     margin-left: 5%;
 }
 
+.card__button--link:hover {
+    background-color: #2A5CAA;
+}
+
 .heart {
     font-size: 28px;
     cursor: pointer;
@@ -235,6 +239,10 @@
 
 .heart_true i {
     color: #FF0000;
+}
+
+.heart:hover {
+    font-size: 30px;
 }
 
 @media screen and (max-width: 768px) {

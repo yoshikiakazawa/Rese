@@ -58,6 +58,11 @@
     font-size: 24px;
 }
 
+.history__ttl--link:hover {
+    background-color: #387ADF;
+    color: #fff;
+}
+
 .history__ttl--empty-message {
     padding: 24px 0;
     font-weight: normal;
@@ -66,7 +71,7 @@
 
 .history__detail--grid-parent {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
     gap: 32px;
 }
 
@@ -80,8 +85,6 @@
 
 .history__detail--header {
     margin-bottom: 1.5em;
-    display: flex;
-    justify-content: space-between;
 }
 
 .history__detail--header-ttl,
@@ -114,6 +117,12 @@
     margin-top: 1em;
 }
 
+.history__modal--button-close:hover,
+.history__modal--button-submit:hover {
+    background-color: #fff;
+    color: #387ADF;
+}
+
 .modal {
     display: none;
     width: 350px;
@@ -140,6 +149,10 @@
     cursor: pointer;
     font-size: 24px;
     margin-left: 4px;
+}
+
+.history__modal--button-label:hover {
+    font-size: 28px;
 }
 
 .modal-toggle {

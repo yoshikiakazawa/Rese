@@ -30,7 +30,7 @@ use Carbon\Carbon;
         <div class="history__detail--grid-parent">
             @foreach ($reservations as $index => $reservation)
             <div class="history__detail">
-                <div class="history__detail--header">
+                <div class="history__detail--header flex justify-between">
                     <p class="history__detail--header-ttl">来店 {{ $index + 1 }}</p>
                     <div class="history__detail--modal">
                         @if (!empty($reservation->rank))

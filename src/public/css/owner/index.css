@@ -98,6 +98,12 @@
     font-size: 14px;
 }
 
+.createShopForm__btn--submit:hover {
+    background-color: #fff;
+    color: #387ADF;
+    border: 2px solid #387ADF;
+}
+
 @media screen and (max-width: 560px) {
     .shop-list__ttl {
         flex-direction: column;
@@ -147,6 +153,16 @@
 .card-content__link--edit {
     color: black;
     font-size: 16px;
+}
+
+.card-content__link--edit:hover {
+    color: #387ADF;
+}
+
+.card-content__link--history:hover {
+    background-color: #387ADF;
+    color: #fff;
+    border: none;
 }
 
 .card-content__overview {
