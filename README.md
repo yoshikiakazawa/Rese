@@ -167,6 +167,12 @@ php artisan db:seed
 php artisan key:generate
 ```
 
+8.シンボリックリンク作成
+
+```bash
+php artisan storage:link
+```
+
 ## 使用技術(実行環境)
 
 - PHP 7.4.9
