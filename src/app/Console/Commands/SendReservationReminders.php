@@ -26,7 +26,7 @@ class SendReservationReminders extends Command
      */
     public function handle()
     {
-        $reservations = Reservation::with('users','shops')->whereDate('date', Carbon::today())->get();
+        $reservations = Reservation::with('user','shop')->whereDate('date', Carbon::today())->get();
         foreach ($reservations as $reservation) {
             if (!empty($reservation->user->email_verified_at)) {
                 try {
